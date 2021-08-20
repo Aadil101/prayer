@@ -1,0 +1,848 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C0DA8629E3C9ADC3086032B /* Pods_prayer_prayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A784F431A472A6189428DA3 /* Pods_prayer_prayerUITests.framework */; };
+		319854B398AF93A06A519FED /* Pods_prayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87328202403129324E4B24 /* Pods_prayerTests.framework */; };
+		BB1BDA5D26A13143001608F2 /* recitationsCleaned.json in Resources */ = {isa = PBXBuildFile; fileRef = BB1BDA5C26A13143001608F2 /* recitationsCleaned.json */; };
+		BB67DBC226C5D7E900A506C9 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = BB67DBC126C5D7E800A506C9 /* Fonts */; };
+		BB686CB2267F100B00652225 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = BB686CB0267F100600652225 /* Audio */; };
+		BB8AB7812670AF5000F95409 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8AB7802670AF5000F95409 /* UserSettings.swift */; };
+		BB9407D326C06FBE00857A29 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9407D226C06FBE00857A29 /* AudioToolbox.framework */; };
+		BBA550D226A5206F0014BA1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA550D126A5206F0014BA1C /* ContentView.swift */; };
+		BBA931462675AFC300EBA5A5 /* surahInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931452675AFC200EBA5A5 /* surahInfo.json */; };
+		BBA931482675B28200EBA5A5 /* translationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931472675B28100EBA5A5 /* translationInfo.json */; };
+		BBA9314A2675D61100EBA5A5 /* languageCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931492675D61000EBA5A5 /* languageCodes.json */; };
+		BBB5C4D3269A2B870050BF4E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5C4D2269A2B850050BF4E /* MapView.swift */; };
+		BBB9104226CF6FDF0071C347 /* Surah_Ayah in Resources */ = {isa = PBXBuildFile; fileRef = BBB9104126CF6FDF0071C347 /* Surah_Ayah */; };
+		BBB9104426CF733C0071C347 /* prayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9104326CF733C0071C347 /* prayerApp.swift */; };
+		BBB9104C26CF8C6C0071C347 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9104B26CF8C6C0071C347 /* Shared.swift */; };
+		BBCB17402692BABA00192D94 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB173F2692BABA00192D94 /* TestView.swift */; };
+		BBEA2019266BC3F4007FEE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA2018266BC3F4007FEE05 /* Assets.xcassets */; };
+		BBEA201C266BC3F4007FEE05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */; };
+		BBEA2027266BC3F5007FEE05 /* prayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2026266BC3F5007FEE05 /* prayerTests.swift */; };
+		BBEA2032266BC3F5007FEE05 /* prayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2031266BC3F5007FEE05 /* prayerUITests.swift */; };
+		BBEA2040266BD4AA007FEE05 /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA203F266BD4AA007FEE05 /* PrayerView.swift */; };
+		BBEA2042266BD8E6007FEE05 /* QiblaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2041266BD8E6007FEE05 /* QiblaView.swift */; };
+		BBEA2044266BD915007FEE05 /* QuranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2043266BD915007FEE05 /* QuranView.swift */; };
+		BBEBBC9626CCD90D00BB946E /* prayerCalculationMethods.json in Resources */ = {isa = PBXBuildFile; fileRef = BBEBBC9526CCD90D00BB946E /* prayerCalculationMethods.json */; };
+		BBF2469F2699177D004CC0E1 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = BBF2469E2699177D004CC0E1 /* BottomSheet */; };
+		BBF434DA266ED6C500ACA32D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF434D9266ED6C500ACA32D /* LocationView.swift */; };
+		EDF286945849A88B4082B607 /* Pods_prayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B53E915340FB4904910C5ED /* Pods_prayer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BBEA2023266BC3F5007FEE05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBEA2009266BC3F1007FEE05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBEA2010266BC3F1007FEE05;
+			remoteInfo = prayer;
+		};
+		BBEA202E266BC3F5007FEE05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBEA2009266BC3F1007FEE05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBEA2010266BC3F1007FEE05;
+			remoteInfo = prayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		002ABF7CAA68D0117044159C /* Pods-prayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayerTests.debug.xcconfig"; path = "Target Support Files/Pods-prayerTests/Pods-prayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0B53E915340FB4904910C5ED /* Pods_prayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A784F431A472A6189428DA3 /* Pods_prayer_prayerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayer_prayerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4191DE8FB5C668964CE360 /* Pods-prayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer.release.xcconfig"; path = "Target Support Files/Pods-prayer/Pods-prayer.release.xcconfig"; sourceTree = "<group>"; };
+		73DFBFA92A394F973648B70D /* Pods-prayer-prayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer-prayerUITests.debug.xcconfig"; path = "Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1BDA5C26A13143001608F2 /* recitationsCleaned.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recitationsCleaned.json; sourceTree = "<group>"; };
+		BB67DBC126C5D7E800A506C9 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		BB686CB0267F100600652225 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
+		BB8AB7802670AF5000F95409 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		BB8B8F7C2695882C000B7DFC /* prayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB8B8F7D2695882C000B7DFC /* prayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB8B8F7E2695882C000B7DFC /* prayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9407D226C06FBE00857A29 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BBA550D126A5206F0014BA1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BBA931452675AFC200EBA5A5 /* surahInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = surahInfo.json; sourceTree = "<group>"; };
+		BBA931472675B28100EBA5A5 /* translationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = translationInfo.json; sourceTree = "<group>"; };
+		BBA931492675D61000EBA5A5 /* languageCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = languageCodes.json; sourceTree = "<group>"; };
+		BBB5C4D2269A2B850050BF4E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BBB9104126CF6FDF0071C347 /* Surah_Ayah */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Surah_Ayah; sourceTree = "<group>"; };
+		BBB9104326CF733C0071C347 /* prayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerApp.swift; sourceTree = "<group>"; };
+		BBB9104B26CF8C6C0071C347 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		BBCB173F2692BABA00192D94 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		BBEA2018266BC3F4007FEE05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BBEA201D266BC3F4007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBEA2026266BC3F5007FEE05 /* prayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerTests.swift; sourceTree = "<group>"; };
+		BBEA2028266BC3F5007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBEA2031266BC3F5007FEE05 /* prayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerUITests.swift; sourceTree = "<group>"; };
+		BBEA2033266BC3F5007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBEA203F266BD4AA007FEE05 /* PrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerView.swift; sourceTree = "<group>"; };
+		BBEA2041266BD8E6007FEE05 /* QiblaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaView.swift; sourceTree = "<group>"; };
+		BBEA2043266BD915007FEE05 /* QuranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranView.swift; sourceTree = "<group>"; };
+		BBEBBC9526CCD90D00BB946E /* prayerCalculationMethods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prayerCalculationMethods.json; sourceTree = "<group>"; };
+		BBF434D9266ED6C500ACA32D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		DA7E10C45F6559DC7E7BED5E /* Pods-prayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer.debug.xcconfig"; path = "Target Support Files/Pods-prayer/Pods-prayer.debug.xcconfig"; sourceTree = "<group>"; };
+		DD4AF6C90BFC512A93F42377 /* Pods-prayer-prayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer-prayerUITests.release.xcconfig"; path = "Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EF87328202403129324E4B24 /* Pods_prayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CA40B3CBBA2CA38963D899 /* Pods-prayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayerTests.release.xcconfig"; path = "Target Support Files/Pods-prayerTests/Pods-prayerTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBEA200E266BC3F1007FEE05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBF2469F2699177D004CC0E1 /* BottomSheet in Frameworks */,
+				BB9407D326C06FBE00857A29 /* AudioToolbox.framework in Frameworks */,
+				EDF286945849A88B4082B607 /* Pods_prayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBEA201F266BC3F5007FEE05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				319854B398AF93A06A519FED /* Pods_prayerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBEA202A266BC3F5007FEE05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C0DA8629E3C9ADC3086032B /* Pods_prayer_prayerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3715F5FDC574BCC86BE89FC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB9407D226C06FBE00857A29 /* AudioToolbox.framework */,
+				0B53E915340FB4904910C5ED /* Pods_prayer.framework */,
+				1A784F431A472A6189428DA3 /* Pods_prayer_prayerUITests.framework */,
+				EF87328202403129324E4B24 /* Pods_prayerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBEA2008266BC3F1007FEE05 = {
+			isa = PBXGroup;
+			children = (
+				BBEA2013266BC3F1007FEE05 /* prayer */,
+				BBEA2025266BC3F5007FEE05 /* prayerTests */,
+				BBEA2030266BC3F5007FEE05 /* prayerUITests */,
+				D1E42438A78B5D93ED3136FA /* Pods */,
+				BB8B8F7C2695882C000B7DFC /* prayer.app */,
+				BB8B8F7D2695882C000B7DFC /* prayerTests.xctest */,
+				BB8B8F7E2695882C000B7DFC /* prayerUITests.xctest */,
+				3715F5FDC574BCC86BE89FC7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BBEA2013266BC3F1007FEE05 /* prayer */ = {
+			isa = PBXGroup;
+			children = (
+				BBB9104126CF6FDF0071C347 /* Surah_Ayah */,
+				BB67DBC126C5D7E800A506C9 /* Fonts */,
+				BB686CB0267F100600652225 /* Audio */,
+				BBB9104326CF733C0071C347 /* prayerApp.swift */,
+				BBA550D126A5206F0014BA1C /* ContentView.swift */,
+				BBEA203F266BD4AA007FEE05 /* PrayerView.swift */,
+				BBB9104B26CF8C6C0071C347 /* Shared.swift */,
+				BBF434D9266ED6C500ACA32D /* LocationView.swift */,
+				BBEA2041266BD8E6007FEE05 /* QiblaView.swift */,
+				BBB5C4D2269A2B850050BF4E /* MapView.swift */,
+				BBEA2043266BD915007FEE05 /* QuranView.swift */,
+				BB8AB7802670AF5000F95409 /* UserSettings.swift */,
+				BBCB173F2692BABA00192D94 /* TestView.swift */,
+				BBA931492675D61000EBA5A5 /* languageCodes.json */,
+				BBEBBC9526CCD90D00BB946E /* prayerCalculationMethods.json */,
+				BB1BDA5C26A13143001608F2 /* recitationsCleaned.json */,
+				BBA931452675AFC200EBA5A5 /* surahInfo.json */,
+				BBA931472675B28100EBA5A5 /* translationInfo.json */,
+				BBEA2018266BC3F4007FEE05 /* Assets.xcassets */,
+				BBEA201D266BC3F4007FEE05 /* Info.plist */,
+				BBEA201A266BC3F4007FEE05 /* Preview Content */,
+			);
+			path = prayer;
+			sourceTree = "<group>";
+		};
+		BBEA201A266BC3F4007FEE05 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BBEA2025266BC3F5007FEE05 /* prayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA2026266BC3F5007FEE05 /* prayerTests.swift */,
+				BBEA2028266BC3F5007FEE05 /* Info.plist */,
+			);
+			path = prayerTests;
+			sourceTree = "<group>";
+		};
+		BBEA2030266BC3F5007FEE05 /* prayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA2031266BC3F5007FEE05 /* prayerUITests.swift */,
+				BBEA2033266BC3F5007FEE05 /* Info.plist */,
+			);
+			path = prayerUITests;
+			sourceTree = "<group>";
+		};
+		D1E42438A78B5D93ED3136FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DA7E10C45F6559DC7E7BED5E /* Pods-prayer.debug.xcconfig */,
+				3E4191DE8FB5C668964CE360 /* Pods-prayer.release.xcconfig */,
+				73DFBFA92A394F973648B70D /* Pods-prayer-prayerUITests.debug.xcconfig */,
+				DD4AF6C90BFC512A93F42377 /* Pods-prayer-prayerUITests.release.xcconfig */,
+				002ABF7CAA68D0117044159C /* Pods-prayerTests.debug.xcconfig */,
+				F1CA40B3CBBA2CA38963D899 /* Pods-prayerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBEA2010266BC3F1007FEE05 /* prayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBEA2036266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayer" */;
+			buildPhases = (
+				E74BEE0C25737589462B91BA /* [CP] Check Pods Manifest.lock */,
+				BBEA200D266BC3F1007FEE05 /* Sources */,
+				BBEA200E266BC3F1007FEE05 /* Frameworks */,
+				BBEA200F266BC3F1007FEE05 /* Resources */,
+				2817B824B5B46E2858FC3DE9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = prayer;
+			packageProductDependencies = (
+				BBF2469E2699177D004CC0E1 /* BottomSheet */,
+			);
+			productName = prayer;
+			productReference = BB8B8F7C2695882C000B7DFC /* prayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BBEA2021266BC3F5007FEE05 /* prayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBEA2039266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayerTests" */;
+			buildPhases = (
+				9B213D73BA2AB4EA5FE18A48 /* [CP] Check Pods Manifest.lock */,
+				BBEA201E266BC3F5007FEE05 /* Sources */,
+				BBEA201F266BC3F5007FEE05 /* Frameworks */,
+				BBEA2020266BC3F5007FEE05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBEA2024266BC3F5007FEE05 /* PBXTargetDependency */,
+			);
+			name = prayerTests;
+			productName = prayerTests;
+			productReference = BB8B8F7D2695882C000B7DFC /* prayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BBEA202C266BC3F5007FEE05 /* prayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBEA203C266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayerUITests" */;
+			buildPhases = (
+				6E6B6804AE230890A9320563 /* [CP] Check Pods Manifest.lock */,
+				BBEA2029266BC3F5007FEE05 /* Sources */,
+				BBEA202A266BC3F5007FEE05 /* Frameworks */,
+				BBEA202B266BC3F5007FEE05 /* Resources */,
+				9C5DFD3F5EB3A224E52EE0E4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBEA202F266BC3F5007FEE05 /* PBXTargetDependency */,
+			);
+			name = prayerUITests;
+			productName = prayerUITests;
+			productReference = BB8B8F7E2695882C000B7DFC /* prayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBEA2009266BC3F1007FEE05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					BBEA2010266BC3F1007FEE05 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					BBEA2021266BC3F5007FEE05 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BBEA2010266BC3F1007FEE05;
+					};
+					BBEA202C266BC3F5007FEE05 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = BBEA2010266BC3F1007FEE05;
+					};
+				};
+			};
+			buildConfigurationList = BBEA200C266BC3F1007FEE05 /* Build configuration list for PBXProject "prayer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BBEA2008266BC3F1007FEE05;
+			packageReferences = (
+				BBF2469D2699177D004CC0E1 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
+			productRefGroup = BBEA2008266BC3F1007FEE05;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBEA2010266BC3F1007FEE05 /* prayer */,
+				BBEA2021266BC3F5007FEE05 /* prayerTests */,
+				BBEA202C266BC3F5007FEE05 /* prayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBEA200F266BC3F1007FEE05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB1BDA5D26A13143001608F2 /* recitationsCleaned.json in Resources */,
+				BBEBBC9626CCD90D00BB946E /* prayerCalculationMethods.json in Resources */,
+				BBA9314A2675D61100EBA5A5 /* languageCodes.json in Resources */,
+				BB67DBC226C5D7E900A506C9 /* Fonts in Resources */,
+				BBEA201C266BC3F4007FEE05 /* Preview Assets.xcassets in Resources */,
+				BBB9104226CF6FDF0071C347 /* Surah_Ayah in Resources */,
+				BBA931462675AFC300EBA5A5 /* surahInfo.json in Resources */,
+				BB686CB2267F100B00652225 /* Audio in Resources */,
+				BBA931482675B28200EBA5A5 /* translationInfo.json in Resources */,
+				BBEA2019266BC3F4007FEE05 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBEA2020266BC3F5007FEE05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBEA202B266BC3F5007FEE05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2817B824B5B46E2858FC3DE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E6B6804AE230890A9320563 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-prayer-prayerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B213D73BA2AB4EA5FE18A48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-prayerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C5DFD3F5EB3A224E52EE0E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E74BEE0C25737589462B91BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-prayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBEA200D266BC3F1007FEE05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBB9104426CF733C0071C347 /* prayerApp.swift in Sources */,
+				BBCB17402692BABA00192D94 /* TestView.swift in Sources */,
+				BBEA2042266BD8E6007FEE05 /* QiblaView.swift in Sources */,
+				BBEA2044266BD915007FEE05 /* QuranView.swift in Sources */,
+				BBB5C4D3269A2B870050BF4E /* MapView.swift in Sources */,
+				BBB9104C26CF8C6C0071C347 /* Shared.swift in Sources */,
+				BBEA2040266BD4AA007FEE05 /* PrayerView.swift in Sources */,
+				BBF434DA266ED6C500ACA32D /* LocationView.swift in Sources */,
+				BB8AB7812670AF5000F95409 /* UserSettings.swift in Sources */,
+				BBA550D226A5206F0014BA1C /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBEA201E266BC3F5007FEE05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBEA2027266BC3F5007FEE05 /* prayerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBEA2029266BC3F5007FEE05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBEA2032266BC3F5007FEE05 /* prayerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBEA2024266BC3F5007FEE05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBEA2010266BC3F1007FEE05 /* prayer */;
+			targetProxy = BBEA2023266BC3F5007FEE05 /* PBXContainerItemProxy */;
+		};
+		BBEA202F266BC3F5007FEE05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBEA2010266BC3F1007FEE05 /* prayer */;
+			targetProxy = BBEA202E266BC3F5007FEE05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BBEA2034266BC3F5007FEE05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = /Users/pickle/Downloads/;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BBEA2035266BC3F5007FEE05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = /Users/pickle/Downloads/;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBEA2037266BC3F5007FEE05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA7E10C45F6559DC7E7BED5E /* Pods-prayer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"prayer/Preview Content\"";
+				DEVELOPMENT_TEAM = ZMZ424KPAU;
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DynamicOverlay/DynamicOverlay.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Fuse/Fuse.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/OverlayContainer/OverlayContainer.framework/Headers\"",
+					"$(SRCROOT)/Pods/**",
+				);
+				INFOPLIST_FILE = prayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aadil.prayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BBEA2038266BC3F5007FEE05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E4191DE8FB5C668964CE360 /* Pods-prayer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"prayer/Preview Content\"";
+				DEVELOPMENT_TEAM = ZMZ424KPAU;
+				ENABLE_PREVIEWS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DynamicOverlay/DynamicOverlay.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Fuse/Fuse.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/OverlayContainer/OverlayContainer.framework/Headers\"",
+					"$(SRCROOT)/Pods/**",
+				);
+				INFOPLIST_FILE = prayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aadil.prayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BBEA203A266BC3F5007FEE05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002ABF7CAA68D0117044159C /* Pods-prayerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMZ424KPAU;
+				INFOPLIST_FILE = prayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aadil.prayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/prayer.app/prayer";
+			};
+			name = Debug;
+		};
+		BBEA203B266BC3F5007FEE05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1CA40B3CBBA2CA38963D899 /* Pods-prayerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMZ424KPAU;
+				INFOPLIST_FILE = prayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aadil.prayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/prayer.app/prayer";
+			};
+			name = Release;
+		};
+		BBEA203D266BC3F5007FEE05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73DFBFA92A394F973648B70D /* Pods-prayer-prayerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMZ424KPAU;
+				INFOPLIST_FILE = prayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aadil.prayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = prayer;
+			};
+			name = Debug;
+		};
+		BBEA203E266BC3F5007FEE05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD4AF6C90BFC512A93F42377 /* Pods-prayer-prayerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZMZ424KPAU;
+				INFOPLIST_FILE = prayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aadil.prayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = prayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBEA200C266BC3F1007FEE05 /* Build configuration list for PBXProject "prayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBEA2034266BC3F5007FEE05 /* Debug */,
+				BBEA2035266BC3F5007FEE05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBEA2036266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBEA2037266BC3F5007FEE05 /* Debug */,
+				BBEA2038266BC3F5007FEE05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBEA2039266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBEA203A266BC3F5007FEE05 /* Debug */,
+				BBEA203B266BC3F5007FEE05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBEA203C266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBEA203D266BC3F5007FEE05 /* Debug */,
+				BBEA203E266BC3F5007FEE05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BBF2469D2699177D004CC0E1 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LucasMucGH/BottomSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BBF2469E2699177D004CC0E1 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBF2469D2699177D004CC0E1 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BBEA2009266BC3F1007FEE05 /* Project object */;
+}

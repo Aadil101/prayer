@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/Al Tarikh.ttc</string>
+		<string>Fonts/AlBayan.ttc</string>
+		<string>Fonts/Almarai-Regular.ttf</string>
+		<string>Fonts/Amiri-Regular.ttf</string>
+		<string>Fonts/ArefRuqaa-Regular.ttf</string>
+		<string>Fonts/Baghdad.ttc</string>
+		<string>Fonts/Beirut.ttc</string>
+		<string>Fonts/Cairo-Regular.ttf</string>
+		<string>Fonts/Changa-Regular.ttf</string>
+		<string>Fonts/DecoTypeNaskh.ttc</string>
+		<string>Fonts/Diwan Kufi.ttc</string>
+		<string>Fonts/Diwan Thuluth.ttf</string>
+		<string>Fonts/ElMessiri-Regular.ttf</string>
+		<string>Fonts/Farisi.ttf</string>
+		<string>Fonts/Harmattan-Regular.ttf</string>
+		<string>Fonts/Jomhuria-Regular.ttf</string>
+		<string>Fonts/Katibeh-Regular.ttf</string>
+		<string>Fonts/Kufam-Regular.ttf</string>
+		<string>Fonts/KufiStandardGK.ttc</string>
+		<string>Fonts/Lalezar-Regular.ttf</string>
+		<string>Fonts/Lateef-Regular</string>
+		<string>Fonts/Lemonada-Regular</string>
+		<string>Fonts/Mada-Regular</string>
+		<string>Fonts/MarkaziText-Regular.ttf</string>
+		<string>Fonts/Microsoft Sans Serif.ttf</string>
+		<string>Fonts/Mirza-Regular.ttf</string>
+		<string>Fonts/Mishafi.ttf</string>
+		<string>Fonts/Muna.ttc</string>
+		<string>Fonts/Nadeem.ttc</string>
+		<string>Fonts/Rakkas-Regular.ttf</string>
+		<string>Fonts/ReemKufi-Regular.ttf</string>
+		<string>Fonts/Sana.ttc</string>
+		<string>Fonts/Scheherazade-Regular.ttf</string>
+		<string>Fonts/Tahoma.ttf</string>
+		<string>Fonts/Tajawal-Regular.ttf</string>
+		<string>Fonts/Vibes-Regular.ttf</string>
+		<string>Fonts/Waseem.ttc</string>
+	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.aadil.prayer.fetchPrayerTimes</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ai Islam</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Will you allow this app to always know your location?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Do you allow this app to know your current location?</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+	</dict>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchScreenBackground</string>
+	</dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>
