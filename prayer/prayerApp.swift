@@ -10,7 +10,7 @@ import BackgroundTasks
 import Adhan
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let appRefreshTaskID: String = "com.aadil.prayer.fetchPrayerTimes"
+    let appRefreshTaskID: String = "com.prayer.fetchPrayerTimes"
     let appRefreshTimeIntervalSinceNow = TimeInterval(60*60*6)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -32,40 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             task.setTaskCompleted(success: false)
             self.scheduleAppRefresh()
         }
-        guard let rawValue1 = UserDefaults.standard.object(forKey: "selectedMadhabRawValue") as? Int else {
-            task.setTaskCompleted(success: false)
-            scheduleAppRefresh()
-            return
+        /*
+        PrayerView.getPrayerTimes(date: Date()) { prayerTimes in
+            //let encodedData = try! JSONEncoder().encode(prayerTimes)
+            //UserDefaults.standard.set(encodedData, forKey: "prayerTimes")
+            //PrayerView.makePrayerNotifications()
+            task.setTaskCompleted(success: true)
+            self.scheduleAppRefresh()
         }
-        guard let rawValue2 = UserDefaults.standard.object(forKey: "selectedPrayerCalculationMethodRawValue") as? String else {
-            task.setTaskCompleted(success: false)
-            scheduleAppRefresh()
-            return
-        }
-        guard let data = UserDefaults.standard.value(forKey:"manualCodableCurrentLocation") as? Data else {
-            task.setTaskCompleted(success: false)
-            scheduleAppRefresh()
-            return
-        }
-        guard let manualCodableCurrentLocation = try? PropertyListDecoder().decode(LocationCodable.self, from: data) else {
-            task.setTaskCompleted(success: false)
-            scheduleAppRefresh()
-            return
-        }
-        if (manualCodableCurrentLocation.city == "") || (manualCodableCurrentLocation.country == "") {
-            task.setTaskCompleted(success: false)
-            scheduleAppRefresh()
-            return
-        }
-        let prayerTimes = UserSettings.getPrayerTimes(date: Date(),
-                                                      location: manualCodableCurrentLocation,
-                                                      madhab: Madhab(rawValue: rawValue1)!,
-                                                      method: CalculationMethod(rawValue: rawValue2)!)
-        let encodedData = try! JSONEncoder().encode(prayerTimes)
-        UserDefaults.standard.set(encodedData, forKey: "prayerTimes")
-        UserSettings.makePrayerNotifications()
-        task.setTaskCompleted(success: true)
-        self.scheduleAppRefresh()
+         */
     }
     
     func scheduleAppRefresh() {
@@ -76,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try BGTaskScheduler.shared.submit(request)
             print("scheduleAppRefresh: BGTaskScheduler.shared.submit(request)")
             // Note: Use the command below to manually test out a background app refresh
-            // e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.aadil.prayer.fetchPrayerTimes"]
+            // e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.prayer.fetchPrayerTimes"]
         } catch {
             print("Could not schedule app refresh: \(error)")
         }
@@ -98,11 +73,11 @@ struct prayerApp: App {
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive {
-                print("inactive")
+                //print("inactive")
             } else if phase == .active {
-                print("active")
+                //print("active")
             } else if phase == .background {
-                print("background")
+                //print("background")
                 appDelegate.cancelAllPendingTasks()
                 appDelegate.scheduleAppRefresh()
             }

@@ -5,37 +5,82 @@
 //  Created by Aadil Islam on 7/10/21.
 //
 
-import MapKit
 import SwiftUI
+import MapKit
 import Contacts
-import BottomSheet
+import BottomSheetSwiftUI
 import Combine
 
-// Note: Might transition from Apple Maps to Google Maps, but Google Maps' Places API might cost $$$
-/*
-struct GoogleMapsView: UIViewRepresentable {
-    @EnvironmentObject var lm: LocationManager
-    let marker : GMSMarker = GMSMarker()
+// Credits: FloatingPanel authors.
+@available(iOS, introduced: 13, deprecated: 15, message: "Use iOS 15 material API.")
+public struct VisualEffectBlur<Content: View>: UIViewRepresentable {
+    var blurStyle: UIBlurEffect.Style = .systemMaterial
+    var vibrancyStyle: UIVibrancyEffectStyle? = nil
+    @ViewBuilder var content: Content
 
-    func makeUIView(context: Context) -> GMSMapView {
-        GMSServices.provideAPIKey(UserSettings.gmsServicesAPIkey)
-        let camera = GMSCameraPosition.camera(withLatitude: lm.location?.latitude ?? UserSettings.defaultLatitude, longitude: lm.location?.longitude ?? UserSettings.defaultLongitude, zoom: 12)
-        let mapView = GMSMapView(frame: CGRect.zero, camera: camera)
-        return mapView
+    public func makeUIView(context: Context) -> UIVisualEffectView {
+        context.coordinator.blurView
     }
 
-    func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
-        let camera = GMSCameraPosition.camera(withLatitude: lm.location?.latitude ?? UserSettings.defaultLatitude, longitude: lm.location?.longitude ?? UserSettings.defaultLongitude, zoom: 12)
-        mapView.animate(to: camera)
+    public func updateUIView(_ view: UIVisualEffectView, context: Context) {
+        context.coordinator.update(
+            content: content,
+            blurStyle: blurStyle,
+            vibrancyStyle: vibrancyStyle
+        )
     }
-}*/
+
+    public func makeCoordinator() -> Coordinator {
+        Coordinator(content: content)
+    }
+
+    public class Coordinator {
+        let blurView = UIVisualEffectView()
+        let vibrancyView = UIVisualEffectView()
+        let hostingController: UIHostingController<Content>
+
+        init(content: Content) {
+            hostingController = UIHostingController(rootView: content)
+            hostingController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            hostingController.view.backgroundColor = nil
+            blurView.contentView.addSubview(vibrancyView)
+
+            blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            vibrancyView.contentView.addSubview(hostingController.view)
+            vibrancyView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        }
+
+        func update(content: Content, blurStyle: UIBlurEffect.Style, vibrancyStyle: UIVibrancyEffectStyle?) {
+            hostingController.rootView = content
+
+            let blurEffect = UIBlurEffect(style: blurStyle)
+            blurView.effect = blurEffect
+
+            if let vibrancyStyle = vibrancyStyle {
+                vibrancyView.effect = UIVibrancyEffect(blurEffect: blurEffect, style: vibrancyStyle)
+            } else {
+                vibrancyView.effect = nil
+            }
+
+            hostingController.view.setNeedsDisplay()
+        }
+    }
+}
+
+public extension VisualEffectBlur where Content == EmptyView {
+    init(
+        blurStyle: UIBlurEffect.Style = .systemMaterial,
+        vibrancyStyle: UIVibrancyEffectStyle? = nil
+    ) {
+        self.init(blurStyle: blurStyle, vibrancyStyle: vibrancyStyle) {
+            EmptyView()
+        }
+    }
+}
 
 extension UIApplication {
     func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
-            .first?
-            .endEditing(force)
+        self.windows.filter{$0.isKeyWindow}.first?.endEditing(force)
     }
 }
 
@@ -172,6 +217,7 @@ extension String {
     }
     
     var detectedPhoneNumbers: [PhoneNumber] { PhoneNumber.extractAll(from: self) }
+    
     var detectedFirstPhoneNumber: PhoneNumber? { PhoneNumber.first(in: self) }
 }
 
@@ -306,17 +352,18 @@ class CustomAnnotation: MKPointAnnotation {
     }
 }
 
+/*
 struct CustomAnnotationView: View {
     let customAnnotation: CustomAnnotation
     @EnvironmentObject var userSettings: UserSettings
-    @EnvironmentObject var lm: LocationManager
+    @EnvironmentObject var ls: LocationService
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(customAnnotation.name ?? "")
                 .font(.body).bold()
             HStack(spacing: 0) {
-                let currentLocation = (userSettings.trackingCurrentLocation) ? lm.location : CLLocation(latitude: userSettings.manualCodableCurrentLocation.latitude, longitude: userSettings.manualCodableCurrentLocation.longitude)
+                let currentLocation = (userSettings.trackingCurrentLocation) ? ls.location : CLLocation(latitude: userSettings.location.latitude, longitude: userSettings.location.longitude)
                 let toLocation = CLLocation(latitude: customAnnotation.coordinate.latitude, longitude: customAnnotation.coordinate.longitude)
                 if let value = currentLocation?.distance(from: toLocation) {
                     let distanceMiles = Measurement(value: value, unit: UnitLength.meters).converted(to: UnitLength.miles).value
@@ -334,8 +381,10 @@ struct CustomAnnotationView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.leading)
+        //.padding()
     }
 }
+ */
 
 struct SearchResultView: View {
     let searchCompletion: MKLocalSearchCompletion
@@ -355,9 +404,10 @@ struct SearchResultView: View {
     }
 }
 
+/*
 struct AppleMapsRepresentableView: UIViewRepresentable {
     @EnvironmentObject var userSettings: UserSettings
-    @EnvironmentObject var lm: LocationManager
+    @EnvironmentObject var ls: LocationService
     @State var toRemoveAnnotations = [CustomAnnotation]()
     @State var toAddAnnotations = [CustomAnnotation]()
     @Binding var reselectedAnnotation: Bool
@@ -421,14 +471,14 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
     }
     
     func getCurrentLocationButton() -> UIButton? {
-        if let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first {
+        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
             let button = UIButton(type: .roundedRect, primaryAction:
                 UIAction { _ in
                     mapMovementMode = .currentLocation
                 }
             )
             button.frame = CGRect(x: window.frame.width-UserSettings.currentLocationButtonSize-10,
-                                  y: window.safeAreaInsets.top,
+                                  y: window.safeAreaInsets.top + 10,
                                   width: UserSettings.currentLocationButtonSize,
                                   height: UserSettings.currentLocationButtonSize)
             button.layer.cornerRadius = button.bounds.size.width/5
@@ -448,10 +498,12 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
     }
     
     func getCompassButton(_ mapView: MKMapView) -> MKCompassButton? {
-        if let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first {
+        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
             let compassButton = MKCompassButton(mapView: mapView)
             compassButton.center = CGPoint(x: window.frame.width - 10 - UserSettings.currentLocationButtonSize/2,
-                                           y: window.safeAreaInsets.top + 10 + UserSettings.currentLocationButtonSize + 5 + compassButton.frame.height/2)
+                                           y: window.safeAreaInsets.top + 10
+                                              + UserSettings.currentLocationButtonSize
+                                              + 10 + compassButton.frame.height/2)
             compassButton.compassVisibility = .adaptive
             return compassButton
         }
@@ -459,13 +511,13 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
     }
     
     func showManualUserLocationMarker(_ mapView: MKMapView) {
-        if let annotation = mapView.annotations.filter({ $0.title == UserSettings.manualCurrentLocationTitle }).first {
+        if let annotation = mapView.annotations.filter({ $0.title == UserSettings.locationTitle }).first {
             mapView.removeAnnotation(annotation)
         }
         if !mapView.showsUserLocation {
-            let coordinate = userSettings.manualCodableCurrentLocation.getCenter()
+            let coordinate = userSettings.location.getCenter()
             let annotation = MKPointAnnotation()
-            annotation.title = UserSettings.manualCurrentLocationTitle
+            annotation.title = UserSettings.locationTitle
             annotation.coordinate = coordinate
             mapView.addAnnotation(annotation)
         }
@@ -485,7 +537,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
         mapView.addSubview(getCompassButton(mapView)!)
         
         //mapView.userTrackingMode = .follow
-        let region = (userSettings.trackingCurrentLocation) ? lm.getRegion(meters: UserSettings.defaultRegionSize) : userSettings.manualCodableCurrentLocation.getRegion(meters: UserSettings.defaultRegionSize)
+        let region = (userSettings.trackingCurrentLocation) ? ls.getRegion(meters: UserSettings.defaultRegionSize) : userSettings.location.getRegion(meters: UserSettings.defaultRegionSize)
         mapView.setRegion(region, animated: true)
         
         mapView.removeAnnotations(toRemoveAnnotations)
@@ -494,7 +546,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
         toAddAnnotations = []
         
         mapView.layoutMargins.bottom = UserSettings.logoAndLegalPixelShift
-        mapView.layoutMargins.top = UserSettings.logoAndLegalPixelShift
+        //mapView.layoutMargins.top = UserSettings.logoAndLegalPixelShift
         
         return mapView
     }
@@ -513,7 +565,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
         
         //mapView.userTrackingMode = .follow
         if mapMovementMode == .currentLocation {
-            let region = (userSettings.trackingCurrentLocation) ? lm.getRegion(meters: UserSettings.defaultRegionSize) : userSettings.manualCodableCurrentLocation.getRegion(meters: UserSettings.defaultRegionSize)
+            let region = (userSettings.trackingCurrentLocation) ? ls.getRegion(meters: UserSettings.defaultRegionSize) : userSettings.location.getRegion(meters: UserSettings.defaultRegionSize)
             mapView.setRegion(region, animated: true)
             mapMovementMode = .none
         } else if mapMovementMode == .selectLocation {
@@ -534,7 +586,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
             mapMovementMode = .none
         }
         let mapLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        if let currentLocation = (userSettings.trackingCurrentLocation) ? lm.location : CLLocation(latitude: userSettings.manualCodableCurrentLocation.latitude, longitude: userSettings.manualCodableCurrentLocation.longitude) {
+        if let currentLocation = (userSettings.trackingCurrentLocation) ? ls.location : CLLocation(latitude: userSettings.location.latitude, longitude: userSettings.location.longitude) {
             showingCurrentLocation = currentLocation.distance(from: mapLocation) < UserSettings.currentLocationDistanceThreshold
         }
         
@@ -586,7 +638,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
                 } else if ann.mode == 1 {
                     
                 }
-            } else if annotation.title == UserSettings.manualCurrentLocationTitle {
+            } else if annotation.title == UserSettings.locationTitle {
                 annotationView!.markerTintColor = UIColor.systemBlue
             }
             return annotationView
@@ -609,63 +661,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
         }
     }
 }
-
-// Note: This MapView is just for testing purposes
-struct AnotherMapsRepresentableView: UIViewRepresentable {
-    @EnvironmentObject var userSettings: UserSettings
-    @EnvironmentObject var lm: LocationManager
-    let key: String
-    static var mapViewStore = [String: MKMapView]()
-    
-    func makeUIView(context: UIViewRepresentableContext<AnotherMapsRepresentableView>) -> MKMapView {
-        if let mapView = AnotherMapsRepresentableView.mapViewStore[key] {
-            print("found makeUIView")
-            mapView.delegate = context.coordinator
-            return mapView
-        }
-        print("new makeUIView")
-        let mapView = MKMapView()
-        mapView.delegate = context.coordinator
-        
-        mapView.showsUserLocation = userSettings.trackingCurrentLocation
-        let region = (userSettings.trackingCurrentLocation) ? lm.getRegion(meters: UserSettings.defaultRegionSize) : userSettings.manualCodableCurrentLocation.getRegion(meters: UserSettings.defaultRegionSize)
-        mapView.setRegion(region, animated: true)
-        
-        mapView.layoutMargins.bottom = UserSettings.logoAndLegalPixelShift
-        mapView.layoutMargins.top = UserSettings.logoAndLegalPixelShift
-        
-        AnotherMapsRepresentableView.mapViewStore[key] = mapView
-        
-        return mapView
-    }
-    func updateUIView(_ mapView: MKMapView, context: UIViewRepresentableContext<AnotherMapsRepresentableView>) {
-        print("updateUIView")
-        mapView.showsUserLocation = userSettings.trackingCurrentLocation
-        // Moves the 'legal' text
-        mapView.layoutMargins.bottom = UserSettings.logoAndLegalPixelShift
-        mapView.layoutMargins.top = UserSettings.logoAndLegalPixelShift
-    }
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: AnotherMapsRepresentableView
-
-        init(_ parent: AnotherMapsRepresentableView) {
-            self.parent = parent
-        }
-        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-        }
-        func mapView(_ mapView: MKMapView, regionDidChangeAnimated: Bool) {
-            
-        }
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            return nil
-        }
-        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        }
-    }
-}
+ */
 
 // Credits: https://stackoverflow.com/a/39012651/15488797
 func openMapsAppWithDirections(to placemark: MKPlacemark?, destinationName name: String) {
@@ -733,42 +729,84 @@ struct AnnotationContentView: View {
     @Binding var annotation: CustomAnnotation?
     @Binding var timeInterval: TimeInterval?
     
+    var directionsHeader: some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                Text("Directions")
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .textCase(nil)
+            } else {
+                Text("Directions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+    
+    var directionsInfo: some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                Image(systemName: "car.fill")
+                    .font(.headline)
+                Text(formatter.string(from: timeInterval!) ?? "?")
+                    .textCase(nil)
+                    .font(.headline)
+            } else {
+                VStack {
+                    Text("Directions")
+                        .font(.headline)
+                    Text("\(formatter.string(from: timeInterval!) ?? "?") drive")
+                        .textCase(nil)
+                        .font(.body)
+                }
+            }
+        }
+    }
+    
+    var detailsHeader: some View {
+        Group {
+            if #available(iOS 15.0, *) {
+                Text("Details")
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .textCase(nil)
+            } else {
+                Text("Details")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+    
     var body: some View {
         List {
             if timeInterval != nil {
                 Section(header:
-                    Text("Directions")
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                        .textCase(nil)
+                    directionsHeader
                 ) {
                     Button(action: {
                         openMapsAppWithDirections(to: annotation?.placemark, destinationName: annotation?.name ?? "")
                     }) {
                         HStack {
                             Spacer()
-                            Image(systemName: "car.fill")
-                            Text(formatter.string(from: timeInterval!) ?? "?")
-                                .textCase(nil)
+                            directionsInfo
                             Spacer()
                         }
-                        .font(.headline)
                         .foregroundColor(.white)
+                        .cornerRadius(10)
                     }
+                    .listRowBackground(Color.blue)
                 }
-                .listRowBackground(Color.blue)
             }
             Section(header:
-                Text("Details")
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                    .textCase(nil)
+                detailsHeader
             ) {
                 if let phoneNumber = annotation?.phoneNumber {
                     VStack(alignment: .leading) {
                         Text("Phone")
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.secondary)
                         Button(action: {
                             phoneNumber.detectedFirstPhoneNumber?.makeACall()
                         }) {
@@ -780,7 +818,7 @@ struct AnnotationContentView: View {
                     VStack(alignment: .leading) {
                         Text("Website")
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundColor(.secondary)
                         Link(url.absoluteString.urlAbsoluteStringCleaned(), destination: url)
                     }
                 }
@@ -790,7 +828,7 @@ struct AnnotationContentView: View {
                         VStack(alignment: .leading) {
                             Text("Address")
                                 .font(.caption)
-                                .foregroundStyle(.secondary)
+                                .foregroundColor(.secondary)
                             Text(address)
                         }
                         Spacer()
@@ -809,12 +847,19 @@ struct AnnotationContentView: View {
                 }
             }
         }
-        .background(Color.clear)
+        .listStyle(InsetGroupedListStyle())
+        .background(
+            VisualEffectBlur(blurStyle: .systemMaterial)
+                // ⚠️ If the `VisualEffectBlur` view receives taps, it's going
+                // to mess up with the whole panel and render it
+                // non-interactive, make sure it never receives any taps.
+                .allowsHitTesting(false)
+        )
     }
 }
 
 enum CustomBottomSheetPosition1: CGFloat, CaseIterable {
-    case top = 0.99, middle = 0.3, bottom = 0.21, hidden = 0
+    case top = 0.99, middle = 0.3, bottom = 0.195, hidden = 0
 }
 
 enum CustomBottomSheetPosition2: CGFloat, CaseIterable {
@@ -842,7 +887,7 @@ func getCustomAnnotationFromCompletion(_ c: MKLocalSearchCompletion, completion:
 
 struct AppleMapsView: View {
     @EnvironmentObject var userSettings: UserSettings
-    @EnvironmentObject var lm: LocationManager
+    @EnvironmentObject var ls: LocationService
     @StateObject var locationSearchService = LocationSearchService()
     @State var globalAnnotations: [CustomAnnotation] = [CustomAnnotation]()
     @State var selectedAnnotation: CustomAnnotation?
@@ -920,28 +965,39 @@ struct AppleMapsView: View {
         bottomSheetPosition2 = .middle
         timeInterval = nil
         if let annotation = annotation {
-            let pickupCoordinate = userSettings.trackingCurrentLocation ? lm.getCenter() : userSettings.manualCodableCurrentLocation.getCenter()
+            /*
+            let pickupCoordinate = userSettings.trackingCurrentLocation ? ls.getCenter() : userSettings.location.getCenter()
             getRouteTime(pickupCoordinate: pickupCoordinate, destinationCoordinate: annotation.coordinate) { timeInterval in
                 self.timeInterval = timeInterval
             }
+             */
+        }
+    }
+    
+    private var statusBarBlur: some View {
+        GeometryReader { geometry in
+            VisualEffectBlur(blurStyle: .systemUltraThinMaterial, vibrancyStyle: nil)
+                .frame(height: geometry.safeAreaInsets.top)
+                .ignoresSafeArea()
         }
     }
     
     var body: some View {
-        // Note: This MapView is just for testing purposes
-        /*
-        AnotherMapsRepresentableView(key: "Test")
-        .environmentObject(userSettings)
-        .environmentObject(lm)
-         */
-        
-        AppleMapsRepresentableView(reselectedAnnotation: $reselectedAnnotation, selectedAnnotation: $selectedAnnotation, globalAnnotations: $globalAnnotations, mapMovementMode: $mapMovementMode, showingCurrentLocation: $showingCurrentLocation, bottomSheetPosition1: $bottomSheetPosition1, bottomSheetPosition2: $bottomSheetPosition2)
-        .environmentObject(userSettings)
-        .environmentObject(lm)
-        .edgesIgnoringSafeArea(.top)
-        .ignoresSafeArea(.keyboard)
+        ZStack {
+            /*
+            AppleMapsRepresentableView(reselectedAnnotation: $reselectedAnnotation, selectedAnnotation: $selectedAnnotation, globalAnnotations: $globalAnnotations, mapMovementMode: $mapMovementMode, showingCurrentLocation: $showingCurrentLocation, bottomSheetPosition1: $bottomSheetPosition1, bottomSheetPosition2: $bottomSheetPosition2)
+            .environmentObject(userSettings)
+            .environmentObject(ls)
+            .edgesIgnoringSafeArea(.top)
+            .ignoresSafeArea(.keyboard)
+             */
+            statusBarBlur
+        }
         
         .bottomSheet(bottomSheetPosition: $bottomSheetPosition1, options: [.appleScrollBehavior], headerContent: {
+            // SE: 667
+            // 12: 844
+            // 12 pro max: 926
             SearchBar(bottomSheetPosition: $bottomSheetPosition1,
                       text: $locationSearchService.searchQuery,
                       isSearching: $isSearching,
@@ -949,6 +1005,7 @@ struct AppleMapsView: View {
                       cancel: cancel,
                       placeholder: "Search")
                 .padding(EdgeInsets(top: -12, leading: -8, bottom: 2, trailing: -8))
+             
         }) {
             if !isSearching || locationSearchService.searchQuery == "" {
                 ForEach(globalAnnotations, id: \.self) { globalAnnotation in
@@ -957,9 +1014,11 @@ struct AppleMapsView: View {
                             UIApplication.shared.endEditing(true)
                             self.actuallySelectAnnotation(annotation: globalAnnotation)
                         }) {
+                            /*
                             CustomAnnotationView(customAnnotation: globalAnnotation)
                                 .environmentObject(userSettings)
-                                .environmentObject(lm)
+                                .environmentObject(ls)
+                             */
                         }
                         .buttonStyle(PlainButtonStyle())
                         Divider().padding(.leading)
@@ -1007,11 +1066,11 @@ struct AppleMapsView: View {
 }
 
 struct MapView_Previews: PreviewProvider {
-    @StateObject static var lm = LocationManager()
+    @StateObject static var ls = LocationService(locationProvider: RealLocationProvider())
     @StateObject static var userSettings = UserSettings()
     static var previews: some View {
         AppleMapsView()
-            .environmentObject(lm)
+            .environmentObject(ls)
             .environmentObject(userSettings)
     }
 }

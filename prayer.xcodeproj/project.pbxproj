@@ -3,37 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0DA8629E3C9ADC3086032B /* Pods_prayer_prayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A784F431A472A6189428DA3 /* Pods_prayer_prayerUITests.framework */; };
-		319854B398AF93A06A519FED /* Pods_prayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF87328202403129324E4B24 /* Pods_prayerTests.framework */; };
-		BB1BDA5D26A13143001608F2 /* recitationsCleaned.json in Resources */ = {isa = PBXBuildFile; fileRef = BB1BDA5C26A13143001608F2 /* recitationsCleaned.json */; };
-		BB67DBC226C5D7E900A506C9 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = BB67DBC126C5D7E800A506C9 /* Fonts */; };
+		1B99330C8A41A09FF0E951D5 /* Pods_prayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB7FC1D63AB48A078E1EAE40 /* Pods_prayerTests.framework */; };
+		1CDA7D6871200FFD52B0BF0C /* Pods_prayer_prayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C293F56305A05B30E83C4 /* Pods_prayer_prayerUITests.framework */; };
+		91EC8C9B90B9CA9338A31970 /* Pods_prayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBA384016BA10DB8452C687 /* Pods_prayer.framework */; };
 		BB686CB2267F100B00652225 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = BB686CB0267F100600652225 /* Audio */; };
 		BB8AB7812670AF5000F95409 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8AB7802670AF5000F95409 /* UserSettings.swift */; };
-		BB9407D326C06FBE00857A29 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9407D226C06FBE00857A29 /* AudioToolbox.framework */; };
+		BB905D5926D2E53E0056C310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA2018266BC3F4007FEE05 /* Assets.xcassets */; };
 		BBA550D226A5206F0014BA1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA550D126A5206F0014BA1C /* ContentView.swift */; };
-		BBA931462675AFC300EBA5A5 /* surahInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931452675AFC200EBA5A5 /* surahInfo.json */; };
-		BBA931482675B28200EBA5A5 /* translationInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931472675B28100EBA5A5 /* translationInfo.json */; };
-		BBA9314A2675D61100EBA5A5 /* languageCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931492675D61000EBA5A5 /* languageCodes.json */; };
 		BBB5C4D3269A2B870050BF4E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5C4D2269A2B850050BF4E /* MapView.swift */; };
-		BBB9104226CF6FDF0071C347 /* Surah_Ayah in Resources */ = {isa = PBXBuildFile; fileRef = BBB9104126CF6FDF0071C347 /* Surah_Ayah */; };
 		BBB9104426CF733C0071C347 /* prayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9104326CF733C0071C347 /* prayerApp.swift */; };
 		BBB9104C26CF8C6C0071C347 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9104B26CF8C6C0071C347 /* Shared.swift */; };
 		BBCB17402692BABA00192D94 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB173F2692BABA00192D94 /* TestView.swift */; };
-		BBEA2019266BC3F4007FEE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA2018266BC3F4007FEE05 /* Assets.xcassets */; };
-		BBEA201C266BC3F4007FEE05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */; };
+		BBE56A2D2889A4390093986D /* WrappingStack in Frameworks */ = {isa = PBXBuildFile; productRef = BBE56A2C2889A4390093986D /* WrappingStack */; };
 		BBEA2027266BC3F5007FEE05 /* prayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2026266BC3F5007FEE05 /* prayerTests.swift */; };
 		BBEA2032266BC3F5007FEE05 /* prayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2031266BC3F5007FEE05 /* prayerUITests.swift */; };
 		BBEA2040266BD4AA007FEE05 /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA203F266BD4AA007FEE05 /* PrayerView.swift */; };
 		BBEA2042266BD8E6007FEE05 /* QiblaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2041266BD8E6007FEE05 /* QiblaView.swift */; };
-		BBEA2044266BD915007FEE05 /* QuranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2043266BD915007FEE05 /* QuranView.swift */; };
 		BBEBBC9626CCD90D00BB946E /* prayerCalculationMethods.json in Resources */ = {isa = PBXBuildFile; fileRef = BBEBBC9526CCD90D00BB946E /* prayerCalculationMethods.json */; };
-		BBF2469F2699177D004CC0E1 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = BBF2469E2699177D004CC0E1 /* BottomSheet */; };
+		BBF09E3526D73FAA008EE349 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF09E3426D73FAA008EE349 /* SearchView.swift */; };
 		BBF434DA266ED6C500ACA32D /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF434D9266ED6C500ACA32D /* LocationView.swift */; };
-		EDF286945849A88B4082B607 /* Pods_prayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B53E915340FB4904910C5ED /* Pods_prayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,30 +46,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		002ABF7CAA68D0117044159C /* Pods-prayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayerTests.debug.xcconfig"; path = "Target Support Files/Pods-prayerTests/Pods-prayerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0B53E915340FB4904910C5ED /* Pods_prayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A784F431A472A6189428DA3 /* Pods_prayer_prayerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayer_prayerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E4191DE8FB5C668964CE360 /* Pods-prayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer.release.xcconfig"; path = "Target Support Files/Pods-prayer/Pods-prayer.release.xcconfig"; sourceTree = "<group>"; };
-		73DFBFA92A394F973648B70D /* Pods-prayer-prayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer-prayerUITests.debug.xcconfig"; path = "Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BB1BDA5C26A13143001608F2 /* recitationsCleaned.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recitationsCleaned.json; sourceTree = "<group>"; };
-		BB67DBC126C5D7E800A506C9 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		18F84B984A08AC976C1FE608 /* Pods-prayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayerTests.release.xcconfig"; path = "Target Support Files/Pods-prayerTests/Pods-prayerTests.release.xcconfig"; sourceTree = "<group>"; };
+		2FBA384016BA10DB8452C687 /* Pods_prayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B5B403FA845D87AC21E1E46 /* Pods-prayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer.debug.xcconfig"; path = "Target Support Files/Pods-prayer/Pods-prayer.debug.xcconfig"; sourceTree = "<group>"; };
+		7D0C5B5FE9CB917A2DD3B3E0 /* Pods-prayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayerTests.debug.xcconfig"; path = "Target Support Files/Pods-prayerTests/Pods-prayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7DB8E92D637ADDCB2F8915CF /* Pods-prayer-prayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer-prayerUITests.debug.xcconfig"; path = "Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AB55E01B80998A11B2E79851 /* Pods-prayer-prayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer-prayerUITests.release.xcconfig"; path = "Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB044158281B12CB009C7CE0 /* swiftui-wrapping-stack */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "swiftui-wrapping-stack"; sourceTree = "<group>"; };
 		BB686CB0267F100600652225 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		BB8AB7802670AF5000F95409 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BB8B8F7C2695882C000B7DFC /* prayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8B8F7D2695882C000B7DFC /* prayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8B8F7E2695882C000B7DFC /* prayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB9407D226C06FBE00857A29 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BBA550D126A5206F0014BA1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BBA931452675AFC200EBA5A5 /* surahInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = surahInfo.json; sourceTree = "<group>"; };
-		BBA931472675B28100EBA5A5 /* translationInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = translationInfo.json; sourceTree = "<group>"; };
-		BBA931492675D61000EBA5A5 /* languageCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = languageCodes.json; sourceTree = "<group>"; };
 		BBB5C4D2269A2B850050BF4E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		BBB9104126CF6FDF0071C347 /* Surah_Ayah */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Surah_Ayah; sourceTree = "<group>"; };
 		BBB9104326CF733C0071C347 /* prayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerApp.swift; sourceTree = "<group>"; };
 		BBB9104B26CF8C6C0071C347 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		BBCB173F2692BABA00192D94 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		BBEA2018266BC3F4007FEE05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BBEA2018266BC3F4007FEE05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = prayer/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		BBEA201D266BC3F4007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBEA2026266BC3F5007FEE05 /* prayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerTests.swift; sourceTree = "<group>"; };
 		BBEA2028266BC3F5007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,13 +71,12 @@
 		BBEA2033266BC3F5007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBEA203F266BD4AA007FEE05 /* PrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerView.swift; sourceTree = "<group>"; };
 		BBEA2041266BD8E6007FEE05 /* QiblaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaView.swift; sourceTree = "<group>"; };
-		BBEA2043266BD915007FEE05 /* QuranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranView.swift; sourceTree = "<group>"; };
 		BBEBBC9526CCD90D00BB946E /* prayerCalculationMethods.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prayerCalculationMethods.json; sourceTree = "<group>"; };
+		BBF09E3426D73FAA008EE349 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		BBF434D9266ED6C500ACA32D /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		DA7E10C45F6559DC7E7BED5E /* Pods-prayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer.debug.xcconfig"; path = "Target Support Files/Pods-prayer/Pods-prayer.debug.xcconfig"; sourceTree = "<group>"; };
-		DD4AF6C90BFC512A93F42377 /* Pods-prayer-prayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer-prayerUITests.release.xcconfig"; path = "Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		EF87328202403129324E4B24 /* Pods_prayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1CA40B3CBBA2CA38963D899 /* Pods-prayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayerTests.release.xcconfig"; path = "Target Support Files/Pods-prayerTests/Pods-prayerTests.release.xcconfig"; sourceTree = "<group>"; };
+		D29C293F56305A05B30E83C4 /* Pods_prayer_prayerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayer_prayerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB7FC1D63AB48A078E1EAE40 /* Pods_prayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2186D72A40D33970ED2F5E2 /* Pods-prayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prayer.release.xcconfig"; path = "Target Support Files/Pods-prayer/Pods-prayer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBF2469F2699177D004CC0E1 /* BottomSheet in Frameworks */,
-				BB9407D326C06FBE00857A29 /* AudioToolbox.framework in Frameworks */,
-				EDF286945849A88B4082B607 /* Pods_prayer.framework in Frameworks */,
+				BBE56A2D2889A4390093986D /* WrappingStack in Frameworks */,
+				91EC8C9B90B9CA9338A31970 /* Pods_prayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				319854B398AF93A06A519FED /* Pods_prayerTests.framework in Frameworks */,
+				1B99330C8A41A09FF0E951D5 /* Pods_prayerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C0DA8629E3C9ADC3086032B /* Pods_prayer_prayerUITests.framework in Frameworks */,
+				1CDA7D6871200FFD52B0BF0C /* Pods_prayer_prayerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,10 +111,9 @@
 		3715F5FDC574BCC86BE89FC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BB9407D226C06FBE00857A29 /* AudioToolbox.framework */,
-				0B53E915340FB4904910C5ED /* Pods_prayer.framework */,
-				1A784F431A472A6189428DA3 /* Pods_prayer_prayerUITests.framework */,
-				EF87328202403129324E4B24 /* Pods_prayerTests.framework */,
+				2FBA384016BA10DB8452C687 /* Pods_prayer.framework */,
+				D29C293F56305A05B30E83C4 /* Pods_prayer_prayerUITests.framework */,
+				DB7FC1D63AB48A078E1EAE40 /* Pods_prayerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,37 +135,23 @@
 		BBEA2013266BC3F1007FEE05 /* prayer */ = {
 			isa = PBXGroup;
 			children = (
-				BBB9104126CF6FDF0071C347 /* Surah_Ayah */,
-				BB67DBC126C5D7E800A506C9 /* Fonts */,
+				BB044158281B12CB009C7CE0 /* swiftui-wrapping-stack */,
 				BB686CB0267F100600652225 /* Audio */,
 				BBB9104326CF733C0071C347 /* prayerApp.swift */,
 				BBA550D126A5206F0014BA1C /* ContentView.swift */,
 				BBEA203F266BD4AA007FEE05 /* PrayerView.swift */,
-				BBB9104B26CF8C6C0071C347 /* Shared.swift */,
-				BBF434D9266ED6C500ACA32D /* LocationView.swift */,
 				BBEA2041266BD8E6007FEE05 /* QiblaView.swift */,
 				BBB5C4D2269A2B850050BF4E /* MapView.swift */,
-				BBEA2043266BD915007FEE05 /* QuranView.swift */,
+				BBF09E3426D73FAA008EE349 /* SearchView.swift */,
 				BB8AB7802670AF5000F95409 /* UserSettings.swift */,
+				BBB9104B26CF8C6C0071C347 /* Shared.swift */,
+				BBF434D9266ED6C500ACA32D /* LocationView.swift */,
 				BBCB173F2692BABA00192D94 /* TestView.swift */,
-				BBA931492675D61000EBA5A5 /* languageCodes.json */,
 				BBEBBC9526CCD90D00BB946E /* prayerCalculationMethods.json */,
-				BB1BDA5C26A13143001608F2 /* recitationsCleaned.json */,
-				BBA931452675AFC200EBA5A5 /* surahInfo.json */,
-				BBA931472675B28100EBA5A5 /* translationInfo.json */,
 				BBEA2018266BC3F4007FEE05 /* Assets.xcassets */,
 				BBEA201D266BC3F4007FEE05 /* Info.plist */,
-				BBEA201A266BC3F4007FEE05 /* Preview Content */,
 			);
 			path = prayer;
-			sourceTree = "<group>";
-		};
-		BBEA201A266BC3F4007FEE05 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		BBEA2025266BC3F5007FEE05 /* prayerTests */ = {
@@ -206,12 +175,12 @@
 		D1E42438A78B5D93ED3136FA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DA7E10C45F6559DC7E7BED5E /* Pods-prayer.debug.xcconfig */,
-				3E4191DE8FB5C668964CE360 /* Pods-prayer.release.xcconfig */,
-				73DFBFA92A394F973648B70D /* Pods-prayer-prayerUITests.debug.xcconfig */,
-				DD4AF6C90BFC512A93F42377 /* Pods-prayer-prayerUITests.release.xcconfig */,
-				002ABF7CAA68D0117044159C /* Pods-prayerTests.debug.xcconfig */,
-				F1CA40B3CBBA2CA38963D899 /* Pods-prayerTests.release.xcconfig */,
+				7B5B403FA845D87AC21E1E46 /* Pods-prayer.debug.xcconfig */,
+				F2186D72A40D33970ED2F5E2 /* Pods-prayer.release.xcconfig */,
+				7DB8E92D637ADDCB2F8915CF /* Pods-prayer-prayerUITests.debug.xcconfig */,
+				AB55E01B80998A11B2E79851 /* Pods-prayer-prayerUITests.release.xcconfig */,
+				7D0C5B5FE9CB917A2DD3B3E0 /* Pods-prayerTests.debug.xcconfig */,
+				18F84B984A08AC976C1FE608 /* Pods-prayerTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -223,11 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBEA2036266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayer" */;
 			buildPhases = (
-				E74BEE0C25737589462B91BA /* [CP] Check Pods Manifest.lock */,
+				6B14AA696241695D08A34518 /* [CP] Check Pods Manifest.lock */,
 				BBEA200D266BC3F1007FEE05 /* Sources */,
 				BBEA200E266BC3F1007FEE05 /* Frameworks */,
 				BBEA200F266BC3F1007FEE05 /* Resources */,
-				2817B824B5B46E2858FC3DE9 /* [CP] Embed Pods Frameworks */,
+				9C6EE94754B306B60E819FAC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,7 +204,7 @@
 			);
 			name = prayer;
 			packageProductDependencies = (
-				BBF2469E2699177D004CC0E1 /* BottomSheet */,
+				BBE56A2C2889A4390093986D /* WrappingStack */,
 			);
 			productName = prayer;
 			productReference = BB8B8F7C2695882C000B7DFC /* prayer.app */;
@@ -245,7 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBEA2039266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayerTests" */;
 			buildPhases = (
-				9B213D73BA2AB4EA5FE18A48 /* [CP] Check Pods Manifest.lock */,
+				BEAF40704DCCD8D561618952 /* [CP] Check Pods Manifest.lock */,
 				BBEA201E266BC3F5007FEE05 /* Sources */,
 				BBEA201F266BC3F5007FEE05 /* Frameworks */,
 				BBEA2020266BC3F5007FEE05 /* Resources */,
@@ -264,11 +233,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBEA203C266BC3F5007FEE05 /* Build configuration list for PBXNativeTarget "prayerUITests" */;
 			buildPhases = (
-				6E6B6804AE230890A9320563 /* [CP] Check Pods Manifest.lock */,
+				A86FC81351F897C0E5FDA4A8 /* [CP] Check Pods Manifest.lock */,
 				BBEA2029266BC3F5007FEE05 /* Sources */,
 				BBEA202A266BC3F5007FEE05 /* Frameworks */,
 				BBEA202B266BC3F5007FEE05 /* Resources */,
-				9C5DFD3F5EB3A224E52EE0E4 /* [CP] Embed Pods Frameworks */,
+				460C74719A878D88FB57EDF9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,6 +282,7 @@
 			mainGroup = BBEA2008266BC3F1007FEE05;
 			packageReferences = (
 				BBF2469D2699177D004CC0E1 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				BBE56A2B2889A4390093986D /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */,
 			);
 			productRefGroup = BBEA2008266BC3F1007FEE05;
 			projectDirPath = "";
@@ -330,16 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB1BDA5D26A13143001608F2 /* recitationsCleaned.json in Resources */,
 				BBEBBC9626CCD90D00BB946E /* prayerCalculationMethods.json in Resources */,
-				BBA9314A2675D61100EBA5A5 /* languageCodes.json in Resources */,
-				BB67DBC226C5D7E900A506C9 /* Fonts in Resources */,
-				BBEA201C266BC3F4007FEE05 /* Preview Assets.xcassets in Resources */,
-				BBB9104226CF6FDF0071C347 /* Surah_Ayah in Resources */,
-				BBA931462675AFC300EBA5A5 /* surahInfo.json in Resources */,
 				BB686CB2267F100B00652225 /* Audio in Resources */,
-				BBA931482675B28200EBA5A5 /* translationInfo.json in Resources */,
-				BBEA2019266BC3F4007FEE05 /* Assets.xcassets in Resources */,
+				BB905D5926D2E53E0056C310 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,68 +323,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2817B824B5B46E2858FC3DE9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E6B6804AE230890A9320563 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-prayer-prayerUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9B213D73BA2AB4EA5FE18A48 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-prayerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C5DFD3F5EB3A224E52EE0E4 /* [CP] Embed Pods Frameworks */ = {
+		460C74719A878D88FB57EDF9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -438,7 +340,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-prayer-prayerUITests/Pods-prayer-prayerUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E74BEE0C25737589462B91BA /* [CP] Check Pods Manifest.lock */ = {
+		6B14AA696241695D08A34518 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -460,6 +362,67 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9C6EE94754B306B60E819FAC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-prayer/Pods-prayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A86FC81351F897C0E5FDA4A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-prayer-prayerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEAF40704DCCD8D561618952 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-prayerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -470,13 +433,13 @@
 				BBB9104426CF733C0071C347 /* prayerApp.swift in Sources */,
 				BBCB17402692BABA00192D94 /* TestView.swift in Sources */,
 				BBEA2042266BD8E6007FEE05 /* QiblaView.swift in Sources */,
-				BBEA2044266BD915007FEE05 /* QuranView.swift in Sources */,
 				BBB5C4D3269A2B870050BF4E /* MapView.swift in Sources */,
 				BBB9104C26CF8C6C0071C347 /* Shared.swift in Sources */,
 				BBEA2040266BD4AA007FEE05 /* PrayerView.swift in Sources */,
 				BBF434DA266ED6C500ACA32D /* LocationView.swift in Sources */,
 				BB8AB7812670AF5000F95409 /* UserSettings.swift in Sources */,
 				BBA550D226A5206F0014BA1C /* ContentView.swift in Sources */,
+				BBF09E3526D73FAA008EE349 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -620,7 +583,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -632,13 +595,14 @@
 		};
 		BBEA2037266BC3F5007FEE05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA7E10C45F6559DC7E7BED5E /* Pods-prayer.debug.xcconfig */;
+			baseConfigurationReference = 7B5B403FA845D87AC21E1E46 /* Pods-prayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"prayer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -650,7 +614,7 @@
 					"$(SRCROOT)/Pods/**",
 				);
 				INFOPLIST_FILE = prayer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -659,19 +623,20 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		BBEA2038266BC3F5007FEE05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E4191DE8FB5C668964CE360 /* Pods-prayer.release.xcconfig */;
+			baseConfigurationReference = F2186D72A40D33970ED2F5E2 /* Pods-prayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"prayer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -683,7 +648,7 @@
 					"$(SRCROOT)/Pods/**",
 				);
 				INFOPLIST_FILE = prayer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -692,20 +657,20 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		BBEA203A266BC3F5007FEE05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 002ABF7CAA68D0117044159C /* Pods-prayerTests.debug.xcconfig */;
+			baseConfigurationReference = 7D0C5B5FE9CB917A2DD3B3E0 /* Pods-prayerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				INFOPLIST_FILE = prayerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -721,14 +686,14 @@
 		};
 		BBEA203B266BC3F5007FEE05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1CA40B3CBBA2CA38963D899 /* Pods-prayerTests.release.xcconfig */;
+			baseConfigurationReference = 18F84B984A08AC976C1FE608 /* Pods-prayerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				INFOPLIST_FILE = prayerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -744,12 +709,13 @@
 		};
 		BBEA203D266BC3F5007FEE05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73DFBFA92A394F973648B70D /* Pods-prayer-prayerUITests.debug.xcconfig */;
+			baseConfigurationReference = 7DB8E92D637ADDCB2F8915CF /* Pods-prayer-prayerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				INFOPLIST_FILE = prayerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -765,12 +731,13 @@
 		};
 		BBEA203E266BC3F5007FEE05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD4AF6C90BFC512A93F42377 /* Pods-prayer-prayerUITests.release.xcconfig */;
+			baseConfigurationReference = AB55E01B80998A11B2E79851 /* Pods-prayer-prayerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				INFOPLIST_FILE = prayerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -826,6 +793,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BBE56A2B2889A4390093986D /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/diniska/swiftui-wrapping-stack";
+			requirement = {
+				branch = void;
+				kind = branch;
+			};
+		};
 		BBF2469D2699177D004CC0E1 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LucasMucGH/BottomSheet.git";
@@ -837,10 +812,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BBF2469E2699177D004CC0E1 /* BottomSheet */ = {
+		BBE56A2C2889A4390093986D /* WrappingStack */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BBF2469D2699177D004CC0E1 /* XCRemoteSwiftPackageReference "BottomSheet" */;
-			productName = BottomSheet;
+			package = BBE56A2B2889A4390093986D /* XCRemoteSwiftPackageReference "swiftui-wrapping-stack" */;
+			productName = WrappingStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

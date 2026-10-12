@@ -4,58 +4,52 @@
 //
 //  Created by Aadil Islam on 6/5/21.
 
+import CoreLocation
 import SwiftUI
 
 struct ContentView: View {
     @State var selection: Tab = .Prayer
     @StateObject var userSettings = UserSettings()
-    @StateObject var lm = LocationManager()
-    @StateObject var audioHandler = AudioHandler()
-    // Note: Variables below are for a future Qibla-direction-finder tab
-    //@StateObject var qiblaObserved = QiblaObserver()
-    //@StateObject var compassHeading = CompassHeading()
+    @StateObject var ls = LocationService(locationProvider: RealLocationProvider())
     
     enum Tab {
         case Prayer
         case Qibla
-        case Quran
         case Map
+        //case Search
     }
     
     var body: some View {
         TabView(selection: $selection) {
             PrayerView()
                 .tabItem {
-                    Label("Prayer", systemImage: "alarm")
+                    Label("Prayer", systemImage: "alarm.fill")
                 }
                 .tag(Tab.Prayer)
-                .environmentObject(lm)
+                .environmentObject(ls)
+                .environmentObject(userSettings)
+            QiblaView()
+                .tabItem {
+                    Label("Qibla", systemImage: "location.fill")
+                }
+                .tag(Tab.Qibla)
+                .environmentObject(ls)
                 .environmentObject(userSettings)
             AppleMapsView()
                 .tabItem {
                     Label("Map", systemImage: "map.fill")
                 }
                 .tag(Tab.Map)
-                .environmentObject(lm)
+                .environmentObject(ls)
                 .environmentObject(userSettings)
-            // Note: View below is for a future Qibla-direction-finder tab
             /*
-            QiblaView()
+            SearchView()
                 .tabItem {
-                    Label("Qibla", systemImage: "location")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
-                .tag(Tab.Qibla)
-                .environmentObject(lm)
-                .environmentObject(qiblaObserved)
-                .environmentObject(compassHeading)
-            */
-            QuranView()
-                .tabItem {
-                    Label("Qur'an", systemImage: "book")
-                }
-                .tag(Tab.Quran)
+                .tag(Tab.Search)
                 .environmentObject(userSettings)
-                .environmentObject(audioHandler)
+            */
         }
     }
 }

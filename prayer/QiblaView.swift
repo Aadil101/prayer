@@ -6,189 +6,187 @@
 //
 
 import SwiftUI
-import Alamofire
-import Combine
 import CoreLocation
 
-// Credits: https://medium.com/flawless-app-stories/build-a-compass-app-with-swiftui-f9b7faa78098
-struct Marker: Hashable {
-    let degrees: Double
-    let label: String
+extension Double {
+    var radians: Double {
+        Measurement(value: self, unit: UnitAngle.degrees)
+            .converted(to: .radians)
+            .value
+    }
 
-    init(degrees: Double, label: String = "") {
-        self.degrees = degrees
-        self.label = label
-    }
-    
-    func degreeText() -> String {
-        return String(format: "%.0f", self.degrees)
-    }
-    
-    static func markers(degrees: Double = Double.nan, label: String = "") -> [Marker] {
-        var markers = [
-            Marker(degrees: 0, label: "N"),
-            Marker(degrees: 30),
-            Marker(degrees: 60),
-            Marker(degrees: 90, label: "E"),
-            Marker(degrees: 120),
-            Marker(degrees: 150),
-            Marker(degrees: 180, label: "S"),
-            Marker(degrees: 210),
-            Marker(degrees: 240),
-            Marker(degrees: 270, label: "w"),
-            Marker(degrees: 300),
-            Marker(degrees: 330)
-        ]
-        if !degrees.isNaN {
-            markers.append(Marker(degrees: degrees, label: label))
-        }
-        return markers
+    var degrees: Double {
+        Measurement(value: self, unit: UnitAngle.radians)
+            .converted(to: .degrees)
+            .value
     }
 }
 
-class QiblaObserver: ObservableObject{
-    @Published var direction: Double = 0.0
-    
-    // Credits: https://aladhan.com/qibla-api
-    func getQiblaDirection(latitude: Double, longitude: Double) {
-        var url = "http://api.aladhan.com/v1/qibla/\(latitude)/\(longitude)"
-        url = url.replacingOccurrences(of: " ", with: "%20")
-        //print("happened: getQiblaDirection")
-        AF.request(url)
-            .responseJSON{
-                response in
-                switch response.result {
-                    case .success(let value):
-                        if let json = value as? [String: Any] {
-                            if let dataDict = json["data"] as? Dictionary<String, Double> {
-                                self.direction = dataDict["direction"]!
-                            }
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+extension FloatingPoint {
+    var minutes:  Self {
+        return (self*3600)
+            .truncatingRemainder(dividingBy: 3600)/60
+    }
+    var seconds:  Self {
+        return (self*3600)
+            .truncatingRemainder(dividingBy: 3600)
+            .truncatingRemainder(dividingBy: 60)
     }
 }
 
-class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
-    var objectWillChange = PassthroughSubject<Void, Never>()
-    var degrees: Double = .zero {
-        didSet {
-            objectWillChange.send()
-        }
+// Credits: https://github.com/kiliankoe/HeadingIndicator
+public struct HeadingIndicator<Content: View>: View {
+    @Binding var targetHeadingRef: Double
+    @Binding var targetBearingRef: Double
+    let currentLocation: CLLocationCoordinate2D
+    let currentHeading: CLHeading
+    let targetLocation: CLLocationCoordinate2D
+    let content: Content
+
+    var targetBearing: Double {
+        let deltaL = targetLocation.longitude.radians - currentLocation.longitude.radians
+        let thetaB = targetLocation.latitude.radians
+        let thetaA = currentLocation.latitude.radians
+
+        let x = cos(thetaB) * sin(deltaL)
+        let y = cos(thetaA) * sin(thetaB) - sin(thetaA) * cos(thetaB) * cos(deltaL)
+        let bearing = atan2(x, y)
+
+        targetBearingRef = bearing.degrees
+        return targetBearingRef
     }
-    
-    private let locationManager: CLLocationManager
-    
-    override init() {
-        self.locationManager = CLLocationManager()
-        super.init()
-        
-        self.locationManager.delegate = self
-        self.setup()
+
+    var targetHeading: Double {
+        targetHeadingRef = targetBearing - currentHeading.magneticHeading
+        return targetHeadingRef
     }
-    
-    private func setup() {
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.headingAvailable() {
-            self.locationManager.startUpdatingLocation()
-            self.locationManager.startUpdatingHeading()
-        }
+
+    public init(targetHeadingRef: Binding<Double>,
+                targetBearingRef: Binding<Double>,
+                currentLocation: CLLocationCoordinate2D,
+                currentHeading: CLHeading,
+                targetLocation: CLLocationCoordinate2D,
+                content: Content) {
+        self._targetHeadingRef = targetHeadingRef
+        self._targetBearingRef = targetBearingRef
+        self.currentLocation = currentLocation
+        self.currentHeading = currentHeading
+        self.targetLocation = targetLocation
+        self.content = content
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.degrees = -1 * newHeading.magneticHeading
+
+    public init(targetHeadingRef: Binding<Double>,
+                targetBearingRef: Binding<Double>,
+                currentLocation: CLLocationCoordinate2D,
+                currentHeading: CLHeading,
+                targetLocation: CLLocationCoordinate2D,
+                contentBuilder: () -> Content) {
+        self._targetHeadingRef = targetHeadingRef
+        self._targetBearingRef = targetBearingRef
+        self.currentLocation = currentLocation
+        self.currentHeading = currentHeading
+        self.targetLocation = targetLocation
+        self.content = contentBuilder()
+    }
+
+    public var body: some View {
+        content
+            .rotationEffect(.degrees(self.targetHeading))
     }
 }
 
-// Credits: https://medium.com/flawless-app-stories/build-a-compass-app-with-swiftui-f9b7faa78098
-struct CompassMarkerView: View {
-    let marker: Marker
-    let compassDegress: Double
+// Credits: https://stackoverflow.com/a/48119496/15488797
+func compassDirection(for heading: CLLocationDirection) -> String {
+    if heading < 0 { return "" }
+    let directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+    let index = Int((heading + 22.5) / 45.0) & 7
+    return directions[index]
+}
 
-    // 1
-    private func capsuleWidth() -> CGFloat {
-        return self.marker.degrees == 0 ? 7 : 3
-    }
-
-    // 2
-    private func capsuleHeight() -> CGFloat {
-        return self.marker.degrees == 0 ? 45 : 30
-    }
-
-    // 3
-    private func capsuleColor() -> Color {
-        return self.marker.degrees == 0 ? .red : .gray
-    }
-
-    // 4
-    private func textAngle() -> Angle {
-        return Angle(degrees: -self.compassDegress - self.marker.degrees)
-    }
-    
-    var body: some View {
-        VStack {
-            // 1
-            Text(marker.degreeText())
-                .fontWeight(.light)
-                .rotationEffect(self.textAngle())
-
-            // 2
-            Capsule()
-                .frame(width: self.capsuleWidth(),
-                       height: self.capsuleHeight())
-                .foregroundColor(self.capsuleColor())
-
-            // 3
-            Text(marker.label)
-                .fontWeight(.bold)
-                .rotationEffect(self.textAngle())
-                .padding(.bottom, 180)
-        }
-        .rotationEffect(Angle(degrees: marker.degrees)) // 4
+// Credits: https://stackoverflow.com/a/35120978/15488797
+extension CLLocationCoordinate2D {
+    var dms: (latitude: String, longitude: String) {
+        return (String(format:"%d°%d'%d\" %@",
+                       Int(abs(latitude)),
+                       Int(abs(latitude.minutes)),
+                       Int(round(abs(latitude.seconds))),
+                       latitude >= 0 ? "N" : "S"),
+                String(format:"%d°%d'%d\" %@",
+                       Int(abs(longitude)),
+                       Int(abs(longitude.minutes)),
+                       Int(round(abs(longitude.seconds))),
+                       longitude >= 0 ? "E" : "W"))
     }
 }
 
-// Credits: https://medium.com/flawless-app-stories/build-a-compass-app-with-swiftui-f9b7faa78098
 struct QiblaView: View {
-    @EnvironmentObject var lm: LocationManager
-    @EnvironmentObject var qiblaObserved: QiblaObserver
-    @EnvironmentObject var compassHeading: CompassHeading
-    // Check Adhan library for code for qibla direction finding
+    @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var ls: LocationService
+    @EnvironmentObject var userSettings: UserSettings
+    @State var targetHeadingRef: Double = 360
+    @State var targetBearingRef: Double = 360
+    let fontSize0: CGFloat = 100
+    let fontSize1: CGFloat = 75
+    let fontSize2: CGFloat = 25
+    let threshold: Double = 3
     
     var body: some View {
-        //GoogleMapsView()
-        //    .edgesIgnoringSafeArea(.all)
-        VStack {
-            Capsule()
-                .frame(width: 5,
-                       height: 50)
-            ZStack {
-                ForEach(Marker.markers(degrees: qiblaObserved.direction, label: "Qibla"), id: \.self) {marker in
-                    CompassMarkerView(marker: marker,
-                                      compassDegress: self.compassHeading.degrees)
-                }
+        ZStack {
+            let t = abs(targetHeadingRef)
+            if colorScheme == .dark {
+                let value = (t < threshold) ? (-1/threshold * t + 1.0) : 0.0
+                Color.init(red: 0.0, green: max(value, 0.0), blue: 0.0)
+            } else if colorScheme == .light {
+                let value = (t < threshold) ? (1/threshold * t) : 1.0
+                Color.init(red: max(value, 0.0), green: 1.0, blue: max(value, 0.0))
             }
-            .frame(width: 300,
-                   height: 300)
-            .rotationEffect(Angle(degrees: self.compassHeading.degrees))
-            .statusBar(hidden: true)
+            VStack {
+                /*
+                if let coordinate = ls.location?.coordinate, let heading = ls.heading {
+                    HeadingIndicator(
+                        targetHeadingRef: $targetHeadingRef,
+                        targetBearingRef: $targetBearingRef,
+                        currentLocation: coordinate,
+                        currentHeading: heading,
+                        targetLocation: CustomLocations.mecca.coordinate()) {
+                            Image(systemName: "arrow.up.circle")
+                                .font(.system(size: fontSize0))
+                    }
+                    let magneticHeading = heading.magneticHeading
+                    Text(String(Int(round(magneticHeading))) + "° " + compassDirection(for: magneticHeading))
+                        .font(.system(size: fontSize1))
+                    Text("\(coordinate.dms.latitude)  \(coordinate.dms.longitude)")
+                        .font(.system(size: fontSize2))
+                    if let placemark = ls.placemark {
+                        let locality = placemark.locality ?? ""
+                        let administrativeArea = placemark.administrativeArea ?? ""
+                        let items: [String] = [locality, administrativeArea].filter {$0 != ""}.uniqued()
+                        if items.count >= 2 {
+                            Text("\(items[0]), \(items[1])")
+                                .font(.system(size: fontSize2))
+                        } else if items.count >= 1 {
+                            Text("\(items[0])")
+                                .font(.system(size: fontSize2))
+                        }
+                    }
+                    Text("Qibla: " + String(Int(round(targetBearingRef))) + "° " + compassDirection(for: targetBearingRef))
+                        .font(.system(size: fontSize2))
+                } else {
+                    Text("?")
+                }
+                 */
+            }
         }
-        .onChange(of: lm.placemark) { placemark in
-            let newLatitude = placemark?.location?.latitude
-            let newLongitude = placemark?.location?.longitude
-            qiblaObserved.getQiblaDirection(latitude: newLatitude!, longitude: newLongitude!)
-        }
+        .ignoresSafeArea()
     }
 }
 
 struct QiblaView_Previews: PreviewProvider {
+    @StateObject static var ls = LocationService(locationProvider: RealLocationProvider())
+    @StateObject static var userSettings = UserSettings()
     static var previews: some View {
         QiblaView()
-            .environmentObject(LocationManager())
-            .environmentObject(QiblaObserver())
-            .environmentObject(CompassHeading())
+            .environmentObject(ls)
+            .environmentObject(userSettings)
     }
 }

@@ -9,11 +9,6 @@ import CoreLocation
 import Combine
 import MapKit
 
-// Credits: https://stackoverflow.com/a/47245036/15488797
-func getCoordinateFrom(address: String, completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> () ) {
-    CLGeocoder().geocodeAddressString(address) { completion($0?.first?.location?.coordinate, $1) }
-}
-
 extension CLLocation {
     var latitude: Double {
         return self.coordinate.latitude
@@ -21,6 +16,19 @@ extension CLLocation {
     
     var longitude: Double {
         return self.coordinate.longitude
+    }
+    
+    func getTimeZone(completion: @escaping ((TimeZone) -> Void)) {
+        CLGeocoder().reverseGeocodeLocation(self) { placemarks, error in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(TimeZone(identifier: "UTC")!)
+            } else if let placemarks = placemarks {
+                if let timeZone = placemarks.first!.timeZone {
+                    completion(timeZone)
+                }
+            }
+        }
     }
 }
 
@@ -75,7 +83,86 @@ struct LocationCodable: Hashable, Comparable, Codable {
     }
 }
 
+enum LocationError: Error {
+    case authorizationDenied
+    case timeout
+    case unknown
+}
 
+protocol LocationProvider {
+    func getCurrentLocation(completion: @escaping (CLLocation?, Error?) -> Void)
+}
+
+class RealLocationProvider: NSObject, LocationProvider {
+    private let locationManager: CLLocationManager
+    private var currentLocationCallback: ((CLLocation?, Error?) -> Void)?
+    
+    override init() {
+        locationManager = CLLocationManager()
+        super.init()
+        locationManager.activityType = CLActivityType.other
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        locationManager.pausesLocationUpdatesAutomatically = true
+    }
+
+    func getCurrentLocation(completion: @escaping (CLLocation?, Error?) -> Void) {
+        // Check for authorization status
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        case .restricted, .denied:
+            completion(nil, LocationError.authorizationDenied)
+        @unknown default:
+            completion(nil, LocationError.unknown)
+        }
+        
+        // Set callback
+        currentLocationCallback = {  (location, err) in
+            completion(location, err)
+        }
+        
+        // Handle location updates or errors
+        // Set a timeout for location retrieval
+        let timeout = DispatchTime.now() + 5.0
+        DispatchQueue.main.asyncAfter(deadline: timeout) {
+            self.locationManager.stopUpdatingLocation()
+            if let location = self.locationManager.location {
+                completion(location, nil)
+            } else {
+                completion(nil, LocationError.timeout)
+            }
+        }
+    }
+}
+
+extension RealLocationProvider: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        // You can optionally perform additional processing on the location here
+        currentLocationCallback?(location, nil)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        currentLocationCallback?(nil, error)
+    }
+}
+
+class LocationService: NSObject, ObservableObject {
+    private let locationProvider: LocationProvider
+    
+    init(locationProvider: LocationProvider) {
+        self.locationProvider = locationProvider
+    }
+    
+    func getCurrentLocation(completion: @escaping (CLLocation?, Error?) -> Void) {
+        self.locationProvider.getCurrentLocation(completion: completion)
+    }
+}
+
+/*
 // Credits: https://adrianhall.github.io/swift/2019/11/05/swiftui-location/
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
@@ -87,7 +174,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         willSet { objectWillChange.send() }
     }
     @Published var placemark: CLPlacemark? {
-        willSet { objectWillChange.send() } //; print("placemark changed to \(String(describing: newValue))") }
+        willSet { objectWillChange.send() }
+    }
+    var heading: CLHeading? {
+        didSet {
+            objectWillChange.send()
+        }
     }
     
     override init() {
@@ -116,13 +208,19 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func start() {
-        self.locationManager.startMonitoringSignificantLocationChanges()
         // Note: Be careful, updating location all the time is costly
         //self.locationManager.startUpdatingLocation()
+        self.locationManager.startMonitoringSignificantLocationChanges()
+        if CLLocationManager.headingAvailable() {
+            self.locationManager.startUpdatingHeading()
+        }
     }
     
     func stop() {
         self.locationManager.stopUpdatingLocation()
+        if CLLocationManager.headingAvailable() {
+            self.locationManager.stopUpdatingHeading()
+        }
     }
 
     func geocode() {
@@ -142,6 +240,10 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         self.location = location
         self.geocode()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        self.heading = newHeading
     }
     
     func getCenter() -> CLLocationCoordinate2D {
@@ -166,20 +268,21 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func getCountry() -> String {
         return self.placemark?.country ?? ""
     }
+    
+    func getLocation() -> CLLocationCoordinate2D {
+        return self.location?.coordinate ?? CLLocationCoordinate2D.init()
+    }
 
     func getLatitude() -> CLLocationDegrees {
-        return self.location?.latitude ?? 0
+        return self.location?.latitude ?? CLLocationDegrees.zero
     }
 
     func getLongitude() -> CLLocationDegrees {
-        return self.location?.longitude ?? 0
-    }
-
-    func getTimeZone() -> TimeZone? {
-        return self.placemark?.timeZone
+        return self.location?.longitude ?? CLLocationDegrees.zero
     }
 
     func getStatus(lm: LocationManager) -> String {
         return String(describing: lm.status)
     }
 }
+*/

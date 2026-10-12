@@ -2,46 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Fonts/Al Tarikh.ttc</string>
-		<string>Fonts/AlBayan.ttc</string>
-		<string>Fonts/Almarai-Regular.ttf</string>
-		<string>Fonts/Amiri-Regular.ttf</string>
-		<string>Fonts/ArefRuqaa-Regular.ttf</string>
-		<string>Fonts/Baghdad.ttc</string>
-		<string>Fonts/Beirut.ttc</string>
-		<string>Fonts/Cairo-Regular.ttf</string>
-		<string>Fonts/Changa-Regular.ttf</string>
-		<string>Fonts/DecoTypeNaskh.ttc</string>
-		<string>Fonts/Diwan Kufi.ttc</string>
-		<string>Fonts/Diwan Thuluth.ttf</string>
-		<string>Fonts/ElMessiri-Regular.ttf</string>
-		<string>Fonts/Farisi.ttf</string>
-		<string>Fonts/Harmattan-Regular.ttf</string>
-		<string>Fonts/Jomhuria-Regular.ttf</string>
-		<string>Fonts/Katibeh-Regular.ttf</string>
-		<string>Fonts/Kufam-Regular.ttf</string>
-		<string>Fonts/KufiStandardGK.ttc</string>
-		<string>Fonts/Lalezar-Regular.ttf</string>
-		<string>Fonts/Lateef-Regular</string>
-		<string>Fonts/Lemonada-Regular</string>
-		<string>Fonts/Mada-Regular</string>
-		<string>Fonts/MarkaziText-Regular.ttf</string>
-		<string>Fonts/Microsoft Sans Serif.ttf</string>
-		<string>Fonts/Mirza-Regular.ttf</string>
-		<string>Fonts/Mishafi.ttf</string>
-		<string>Fonts/Muna.ttc</string>
-		<string>Fonts/Nadeem.ttc</string>
-		<string>Fonts/Rakkas-Regular.ttf</string>
-		<string>Fonts/ReemKufi-Regular.ttf</string>
-		<string>Fonts/Sana.ttc</string>
-		<string>Fonts/Scheherazade-Regular.ttf</string>
-		<string>Fonts/Tahoma.ttf</string>
-		<string>Fonts/Tajawal-Regular.ttf</string>
-		<string>Fonts/Vibes-Regular.ttf</string>
-		<string>Fonts/Waseem.ttc</string>
-	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.aadil.prayer.fetchPrayerTimes</string>
@@ -75,6 +35,47 @@
 	<string>Will you allow this app to always know your location?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Do you allow this app to know your current location?</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/Al Tarikh.ttc</string>
+		<string>Fonts/AlBayan.ttc</string>
+		<string>Fonts/Almarai-Regular.ttf</string>
+		<string>Fonts/Amiri-Regular.ttf</string>
+		<string>Fonts/ArefRuqaa-Regular.ttf</string>
+		<string>Fonts/Baghdad.ttc</string>
+		<string>Fonts/Beirut.ttc</string>
+		<string>Fonts/Cairo-Regular.ttf</string>
+		<string>Fonts/Changa-Regular.ttf</string>
+		<string>Fonts/DecoTypeNaskh.ttc</string>
+		<string>Fonts/Diwan Kufi.ttc</string>
+		<string>Fonts/Diwan Thuluth.ttf</string>
+		<string>Fonts/ElMessiri-Regular.ttf</string>
+		<string>Fonts/Farisi.ttf</string>
+		<string>Fonts/Harmattan-Regular.ttf</string>
+		<string>Fonts/Jomhuria-Regular.ttf</string>
+		<string>Fonts/Katibeh-Regular.ttf</string>
+		<string>Fonts/Kufam-Regular.ttf</string>
+		<string>Fonts/KufiStandardGK.ttc</string>
+		<string>Fonts/Lalezar-Regular.ttf</string>
+		<string>Fonts/Lateef-Regular</string>
+		<string>Fonts/Lemonada-Regular</string>
+		<string>Fonts/Mada-Regular</string>
+		<string>Fonts/MarkaziText-Regular.ttf</string>
+		<string>Fonts/Microsoft Sans Serif.ttf</string>
+		<string>Fonts/Mirza-Regular.ttf</string>
+		<string>Fonts/Mishafi.ttf</string>
+		<string>Fonts/Muna.ttc</string>
+		<string>Fonts/Nadeem.ttc</string>
+		<string>Fonts/quran_common.ttf</string>
+		<string>Fonts/Rakkas-Regular.ttf</string>
+		<string>Fonts/ReemKufi-Regular.ttf</string>
+		<string>Fonts/Sana.ttc</string>
+		<string>Fonts/Scheherazade-Regular.ttf</string>
+		<string>Fonts/Tahoma.ttf</string>
+		<string>Fonts/Tajawal-Regular.ttf</string>
+		<string>Fonts/Vibes-Regular.ttf</string>
+		<string>Fonts/Waseem.ttc</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -10,14 +10,18 @@ import UserNotifications
 
 // Credits: https://www.youtube.com/watch?v=iRjyk1S0nvo
 final class NotificationManager: ObservableObject {
-    @Published var notifications: [UNNotificationRequest] = []
+    let notificationCenter: UNUserNotificationCenter
+    var pendingNotifications: [UNNotificationRequest]
     @Published var authorizationStatus: UNAuthorizationStatus?
     
-    static var name2idx: [String: Int] = [:]
+    init(notificationCenter: UNUserNotificationCenter) {
+        self.notificationCenter = notificationCenter
+        self.pendingNotifications = []
+        self.authorizationStatus = nil
+    }
     
     func reloadAuthorizationStatus() {
-        //print("reloadAuthorizationStatus")
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
+        self.notificationCenter.getNotificationSettings { settings in
             DispatchQueue.main.async {
                 self.authorizationStatus = settings.authorizationStatus
             }
@@ -25,8 +29,7 @@ final class NotificationManager: ObservableObject {
     }
     
     func requestAuthorization() {
-        //print("requestAuthorization")
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { isGranted, _ in
+        self.notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { isGranted, _ in
             DispatchQueue.main.async {
                 self.authorizationStatus = isGranted ? .authorized : .denied
             }
@@ -34,35 +37,97 @@ final class NotificationManager: ObservableObject {
     }
     
     func reloadLocalNotifications() {
-        //print("reloadLocalNotifications")
-        UNUserNotificationCenter.current().getPendingNotificationRequests { notifications in
+        self.notificationCenter.getPendingNotificationRequests { notifications in
             DispatchQueue.main.async {
-                self.notifications = notifications
+                self.pendingNotifications = notifications
             }
         }
     }
     
-    static func createPrayerNotification(name: String, time: String, date: Date,
-                                         sound: UNNotificationSound = .default, body: String = "",
-                                         completion: @escaping (Error?) -> Void) {
-        let current = UNUserNotificationCenter.current()
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "\(name) at \(convertDate(input: time))"
-        notificationContent.sound = sound
-        notificationContent.body = body
-        
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        let hour = Int(time.prefix(2))!
-        let minute = Int(time.suffix(2))!
-        
-        let dateComponents = DateComponents(
-            year: components.year, month: components.month, day: components.day,
-            hour: hour, minute: minute)
+    func createPrayerNotification(name: String,
+                                  date: Date,
+                                  sound: UNNotificationSound = .default,
+                                  body: String = "",
+                                  completion: @escaping (Error?) -> Void) {
+        let content = UNMutableNotificationContent()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        content.title = "\(name) at \(dateFormatter.string(from: date))"
+        content.sound = sound
+        content.body = body
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: "\(name).notification",
+                                            content: content,
+                                            trigger: trigger)
+        self.notificationCenter.add(request, withCompletionHandler: completion)
+    }
+}
+
+// Credits: https://stackoverflow.com/a/63298758/15488797
+struct SearchNavigation<Content: View>: UIViewControllerRepresentable {
+    @Binding var text: String
+    var search: () -> Void
+    var cancel: () -> Void
+    var searchOnlyOnClick: Bool = false
+    var content: () -> Content
+
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: context.coordinator.rootViewController)
+        navigationController.navigationBar.prefersLargeTitles = true
         
-        //print("createPrayerNotification dateComponents: \(dateComponents)")
-        let request = UNNotificationRequest(identifier: "\(name).notification", content: notificationContent, trigger: trigger)
-        current.add(request, withCompletionHandler: completion)
+        context.coordinator.searchController.searchBar.delegate = context.coordinator
+        
+        return navigationController
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+        context.coordinator.update(content: content())
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(content: content(), searchText: $text, searchAction: search, cancelAction: cancel, searchOnlyOnClick: searchOnlyOnClick)
+    }
+    
+    class Coordinator: NSObject, UISearchBarDelegate {
+        @Binding var text: String
+        let rootViewController: UIHostingController<Content>
+        let searchController = UISearchController(searchResultsController: nil)
+        var search: () -> Void
+        var cancel: () -> Void
+        var searchOnlyOnClick: Bool
+        
+        init(content: Content, searchText: Binding<String>, searchAction: @escaping () -> Void, cancelAction: @escaping () -> Void, searchOnlyOnClick: Bool) {
+            rootViewController = UIHostingController(rootView: content)
+            searchController.searchBar.autocapitalizationType = .none
+            searchController.obscuresBackgroundDuringPresentation = false
+            rootViewController.navigationItem.searchController = searchController
+            
+            _text = searchText
+            search = searchAction
+            cancel = cancelAction
+            self.searchOnlyOnClick = searchOnlyOnClick
+        }
+        
+        func update(content: Content) {
+            rootViewController.rootView = content
+            rootViewController.view.setNeedsDisplay()
+        }
+        
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            text = searchText
+            if !searchOnlyOnClick {
+                search()
+            }
+        }
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            search()
+        }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            cancel()
+        }
     }
 }
 
