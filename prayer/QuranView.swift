@@ -680,27 +680,28 @@ struct SurahDetail: View {
                                         showAyahSettings: $showAyahSettings)
                                     .environmentObject(userSettings)
                                     .environmentObject(audioHandler)
-                                    .id(i)
                                 if i != endIdx {
                                     Divider()
                                 }
                             }
+                            .padding(.horizontal)
+                            .id(i)
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, showAudioView ? UserSettings.audioHeight : 0)
+                    //.padding(.bottom, showAudioView ? UserSettings.audioHeight : 0)
                     .onChange(of: audioHandler.i) {newI in
                         withAnimation(.linear(duration: 1)) {
-                            proxy.scrollTo(newI, anchor: .top)
+                            proxy.scrollTo(newI)//, anchor: .top)
                         }
                     }
                 }
             }
+            /*
             if showAudioView {
                 InfoPaneView()
                     .environmentObject(userSettings)
                     .environmentObject(audioHandler)
-            }
+            }*/
         }
         .navigationBarTitle(Text("\(details["englishName"]!)"), displayMode: .inline)
         .toolbar {
@@ -749,6 +750,7 @@ struct SurahRow: View {
                 Text("Surat \(details["englishName"]!)  \(details["arabicName"]!)")
                 Text("\(Int(details["numberOfAyahs"]!)!) verses")
                     .font(.caption)
+                    .foregroundColor(.gray)
             }
         }
     }

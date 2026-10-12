@@ -32,10 +32,7 @@ struct GoogleMapsView: UIViewRepresentable {
 
 extension UIApplication {
     func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
-            .first?
-            .endEditing(force)
+        self.windows.filter{$0.isKeyWindow}.first?.endEditing(force)
     }
 }
 
@@ -428,7 +425,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
                 }
             )
             button.frame = CGRect(x: window.frame.width-UserSettings.currentLocationButtonSize-10,
-                                  y: window.safeAreaInsets.top,
+                                  y: window.safeAreaInsets.top + 5,
                                   width: UserSettings.currentLocationButtonSize,
                                   height: UserSettings.currentLocationButtonSize)
             button.layer.cornerRadius = button.bounds.size.width/5
@@ -448,10 +445,12 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
     }
     
     func getCompassButton(_ mapView: MKMapView) -> MKCompassButton? {
-        if let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first {
+        if let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first {
             let compassButton = MKCompassButton(mapView: mapView)
             compassButton.center = CGPoint(x: window.frame.width - 10 - UserSettings.currentLocationButtonSize/2,
-                                           y: window.safeAreaInsets.top + 10 + UserSettings.currentLocationButtonSize + 5 + compassButton.frame.height/2)
+                                           y: window.safeAreaInsets.top + 5
+                                              + UserSettings.currentLocationButtonSize
+                                              + 10 + compassButton.frame.height/2)
             compassButton.compassVisibility = .adaptive
             return compassButton
         }
@@ -494,7 +493,7 @@ struct AppleMapsRepresentableView: UIViewRepresentable {
         toAddAnnotations = []
         
         mapView.layoutMargins.bottom = UserSettings.logoAndLegalPixelShift
-        mapView.layoutMargins.top = UserSettings.logoAndLegalPixelShift
+        //mapView.layoutMargins.top = UserSettings.logoAndLegalPixelShift
         
         return mapView
     }
@@ -814,7 +813,7 @@ struct AnnotationContentView: View {
 }
 
 enum CustomBottomSheetPosition1: CGFloat, CaseIterable {
-    case top = 0.99, middle = 0.3, bottom = 0.21, hidden = 0
+    case top = 0.99, middle = 0.3, bottom = 0.195, hidden = 0
 }
 
 enum CustomBottomSheetPosition2: CGFloat, CaseIterable {
@@ -942,6 +941,10 @@ struct AppleMapsView: View {
         .ignoresSafeArea(.keyboard)
         
         .bottomSheet(bottomSheetPosition: $bottomSheetPosition1, options: [.appleScrollBehavior], headerContent: {
+            //Text("\(UIScreen.main.bounds.height)")
+            // SE: 667
+            // 12: 844
+            // 12 pro max: 926
             SearchBar(bottomSheetPosition: $bottomSheetPosition1,
                       text: $locationSearchService.searchQuery,
                       isSearching: $isSearching,
@@ -949,6 +952,7 @@ struct AppleMapsView: View {
                       cancel: cancel,
                       placeholder: "Search")
                 .padding(EdgeInsets(top: -12, leading: -8, bottom: 2, trailing: -8))
+             
         }) {
             if !isSearching || locationSearchService.searchQuery == "" {
                 ForEach(globalAnnotations, id: \.self) { globalAnnotation in

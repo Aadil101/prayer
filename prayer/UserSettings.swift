@@ -29,6 +29,10 @@ struct CustomLocations {
     struct CustomLocation {
         var latitude: Double
         var longitude: Double
+        func coordinate() -> CLLocationCoordinate2D {
+            return CLLocationCoordinate2D(latitude: self.latitude,
+                                          longitude: self.longitude)
+        }
     }
     static let burlington = CustomLocation(latitude: 42.5, longitude: -71.2)
     static let dubai = CustomLocation(latitude: 25.2, longitude: 55.27)

@@ -9,6 +9,7 @@ import SwiftUI
 import Alamofire
 import Combine
 import CoreLocation
+import Adhan
 
 // Credits: https://medium.com/flawless-app-stories/build-a-compass-app-with-swiftui-f9b7faa78098
 struct Marker: Hashable {
@@ -46,34 +47,9 @@ struct Marker: Hashable {
     }
 }
 
-class QiblaObserver: ObservableObject{
-    @Published var direction: Double = 0.0
-    
-    // Credits: https://aladhan.com/qibla-api
-    func getQiblaDirection(latitude: Double, longitude: Double) {
-        var url = "http://api.aladhan.com/v1/qibla/\(latitude)/\(longitude)"
-        url = url.replacingOccurrences(of: " ", with: "%20")
-        //print("happened: getQiblaDirection")
-        AF.request(url)
-            .responseJSON{
-                response in
-                switch response.result {
-                    case .success(let value):
-                        if let json = value as? [String: Any] {
-                            if let dataDict = json["data"] as? Dictionary<String, Double> {
-                                self.direction = dataDict["direction"]!
-                            }
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-    }
-}
-
 class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
     var objectWillChange = PassthroughSubject<Void, Never>()
-    var degrees: Double = .zero {
+    var heading: CLHeading = CLHeading() {
         didSet {
             objectWillChange.send()
         }
@@ -93,13 +69,13 @@ class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.headingAvailable() {
-            self.locationManager.startUpdatingLocation()
+            self.locationManager.startMonitoringSignificantLocationChanges()
             self.locationManager.startUpdatingHeading()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.degrees = -1 * newHeading.magneticHeading
+        self.heading = newHeading
     }
 }
 
@@ -152,43 +128,41 @@ struct CompassMarkerView: View {
 }
 
 // Credits: https://medium.com/flawless-app-stories/build-a-compass-app-with-swiftui-f9b7faa78098
-struct QiblaView: View {
+struct OldQiblaView: View {
     @EnvironmentObject var lm: LocationManager
-    @EnvironmentObject var qiblaObserved: QiblaObserver
     @EnvironmentObject var compassHeading: CompassHeading
-    // Check Adhan library for code for qibla direction finding
+    @State var direction: Double = 0.0
     
     var body: some View {
-        //GoogleMapsView()
-        //    .edgesIgnoringSafeArea(.all)
         VStack {
             Capsule()
                 .frame(width: 5,
                        height: 50)
             ZStack {
-                ForEach(Marker.markers(degrees: qiblaObserved.direction, label: "Qibla"), id: \.self) {marker in
+                ForEach(Marker.markers(degrees: direction, label: "Qibla"), id: \.self) {marker in
                     CompassMarkerView(marker: marker,
-                                      compassDegress: self.compassHeading.degrees)
+                                      compassDegress: -1*self.compassHeading.heading.magneticHeading)
                 }
             }
             .frame(width: 300,
                    height: 300)
-            .rotationEffect(Angle(degrees: self.compassHeading.degrees))
+            .rotationEffect(Angle(degrees: -1*self.compassHeading.heading.magneticHeading))
             .statusBar(hidden: true)
         }
         .onChange(of: lm.placemark) { placemark in
-            let newLatitude = placemark?.location?.latitude
-            let newLongitude = placemark?.location?.longitude
-            qiblaObserved.getQiblaDirection(latitude: newLatitude!, longitude: newLongitude!)
+            print(".onChange(of: lm.placemark)")
+            if let latitude = placemark?.location?.latitude, let longitude = placemark?.location?.longitude {
+                let coordinates = Coordinates(latitude: latitude, longitude: longitude)
+                direction = Qibla(coordinates: coordinates).direction
+            }
         }
     }
 }
 
 struct QiblaView_Previews: PreviewProvider {
     static var previews: some View {
-        QiblaView()
+        OldQiblaView()
             .environmentObject(LocationManager())
-            .environmentObject(QiblaObserver())
             .environmentObject(CompassHeading())
     }
 }

@@ -13,6 +13,7 @@
 		BB67DBC226C5D7E900A506C9 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = BB67DBC126C5D7E800A506C9 /* Fonts */; };
 		BB686CB2267F100B00652225 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = BB686CB0267F100600652225 /* Audio */; };
 		BB8AB7812670AF5000F95409 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8AB7802670AF5000F95409 /* UserSettings.swift */; };
+		BB905D5926D2E53E0056C310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA2018266BC3F4007FEE05 /* Assets.xcassets */; };
 		BB9407D326C06FBE00857A29 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9407D226C06FBE00857A29 /* AudioToolbox.framework */; };
 		BBA550D226A5206F0014BA1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA550D126A5206F0014BA1C /* ContentView.swift */; };
 		BBA931462675AFC300EBA5A5 /* surahInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = BBA931452675AFC200EBA5A5 /* surahInfo.json */; };
@@ -23,8 +24,6 @@
 		BBB9104426CF733C0071C347 /* prayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9104326CF733C0071C347 /* prayerApp.swift */; };
 		BBB9104C26CF8C6C0071C347 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB9104B26CF8C6C0071C347 /* Shared.swift */; };
 		BBCB17402692BABA00192D94 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB173F2692BABA00192D94 /* TestView.swift */; };
-		BBEA2019266BC3F4007FEE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA2018266BC3F4007FEE05 /* Assets.xcassets */; };
-		BBEA201C266BC3F4007FEE05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */; };
 		BBEA2027266BC3F5007FEE05 /* prayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2026266BC3F5007FEE05 /* prayerTests.swift */; };
 		BBEA2032266BC3F5007FEE05 /* prayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA2031266BC3F5007FEE05 /* prayerUITests.swift */; };
 		BBEA2040266BD4AA007FEE05 /* PrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA203F266BD4AA007FEE05 /* PrayerView.swift */; };
@@ -76,8 +75,7 @@
 		BBB9104326CF733C0071C347 /* prayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerApp.swift; sourceTree = "<group>"; };
 		BBB9104B26CF8C6C0071C347 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		BBCB173F2692BABA00192D94 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		BBEA2018266BC3F4007FEE05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BBEA2018266BC3F4007FEE05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = prayer/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		BBEA201D266BC3F4007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBEA2026266BC3F5007FEE05 /* prayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = prayerTests.swift; sourceTree = "<group>"; };
 		BBEA2028266BC3F5007FEE05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,17 +170,8 @@
 				BBA931472675B28100EBA5A5 /* translationInfo.json */,
 				BBEA2018266BC3F4007FEE05 /* Assets.xcassets */,
 				BBEA201D266BC3F4007FEE05 /* Info.plist */,
-				BBEA201A266BC3F4007FEE05 /* Preview Content */,
 			);
 			path = prayer;
-			sourceTree = "<group>";
-		};
-		BBEA201A266BC3F4007FEE05 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				BBEA201B266BC3F4007FEE05 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		BBEA2025266BC3F5007FEE05 /* prayerTests */ = {
@@ -334,12 +323,11 @@
 				BBEBBC9626CCD90D00BB946E /* prayerCalculationMethods.json in Resources */,
 				BBA9314A2675D61100EBA5A5 /* languageCodes.json in Resources */,
 				BB67DBC226C5D7E900A506C9 /* Fonts in Resources */,
-				BBEA201C266BC3F4007FEE05 /* Preview Assets.xcassets in Resources */,
 				BBB9104226CF6FDF0071C347 /* Surah_Ayah in Resources */,
 				BBA931462675AFC300EBA5A5 /* surahInfo.json in Resources */,
 				BB686CB2267F100B00652225 /* Audio in Resources */,
+				BB905D5926D2E53E0056C310 /* Assets.xcassets in Resources */,
 				BBA931482675B28200EBA5A5 /* translationInfo.json in Resources */,
-				BBEA2019266BC3F4007FEE05 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,9 +624,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"prayer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -659,7 +648,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -669,9 +658,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"prayer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = ZMZ424KPAU;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -692,7 +682,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

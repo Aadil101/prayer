@@ -265,7 +265,9 @@ struct PrayerView: View {
                 }
             }
         }
-        .onAppear(perform: userSettings.notificationManager.reloadAuthorizationStatus)
+        .onAppear {
+            userSettings.notificationManager.reloadAuthorizationStatus()
+        }
         .onChange(of: userSettings.notificationManager.authorizationStatus) { authorizationStatus in
             switch authorizationStatus {
             case .notDetermined:

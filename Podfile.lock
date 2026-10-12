@@ -1,0 +1,28 @@
+PODS:
+  - Adhan (1.3.0)
+  - Alamofire (5.4.3)
+  - Fuse (1.4.0)
+  - SSZipArchive (2.4.2)
+
+DEPENDENCIES:
+  - Adhan
+  - Alamofire
+  - Fuse
+  - SSZipArchive
+
+SPEC REPOS:
+  trunk:
+    - Adhan
+    - Alamofire
+    - Fuse
+    - SSZipArchive
+
+SPEC CHECKSUMS:
+  Adhan: 28d94d9c12d72df3505c64aa0a5a9d90597f036b
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Fuse: 48eaf66d0c407c7f8b0ddb168888dc4637e87f14
+  SSZipArchive: e7b4f3d9e780c2acc1764cd88fbf2de28f26e5b2
+
+PODFILE CHECKSUM: f548832073085a1a562b2ca82e874865c349c6d1
+
+COCOAPODS: 1.10.1

@@ -89,6 +89,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var placemark: CLPlacemark? {
         willSet { objectWillChange.send() } //; print("placemark changed to \(String(describing: newValue))") }
     }
+    var heading: CLHeading = CLHeading() {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     
     override init() {
         super.init()
@@ -119,10 +124,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locationManager.startMonitoringSignificantLocationChanges()
         // Note: Be careful, updating location all the time is costly
         //self.locationManager.startUpdatingLocation()
+        if CLLocationManager.headingAvailable() {
+            self.locationManager.startUpdatingHeading()
+        }
     }
     
     func stop() {
         self.locationManager.stopUpdatingLocation()
+        if CLLocationManager.headingAvailable() {
+            self.locationManager.stopUpdatingHeading()
+        }
     }
 
     func geocode() {
@@ -142,6 +153,10 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         self.location = location
         self.geocode()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        self.heading = newHeading
     }
     
     func getCenter() -> CLLocationCoordinate2D {

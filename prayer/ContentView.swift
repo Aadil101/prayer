@@ -7,19 +7,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selection: Tab = .Prayer
+    @State var selection: Tab = .Quran
     @StateObject var userSettings = UserSettings()
-    @StateObject var lm = LocationManager()
     @StateObject var audioHandler = AudioHandler()
+    @StateObject var lm = LocationManager()
     // Note: Variables below are for a future Qibla-direction-finder tab
-    //@StateObject var qiblaObserved = QiblaObserver()
-    //@StateObject var compassHeading = CompassHeading()
     
     enum Tab {
         case Prayer
         case Qibla
-        case Quran
         case Map
+        case Quran
     }
     
     var body: some View {
@@ -31,6 +29,13 @@ struct ContentView: View {
                 .tag(Tab.Prayer)
                 .environmentObject(lm)
                 .environmentObject(userSettings)
+            QiblaView()
+                .tabItem {
+                    Label("Qibla", systemImage: "location")
+                }
+                .tag(Tab.Qibla)
+                .environmentObject(lm)
+                .environmentObject(userSettings)
             AppleMapsView()
                 .tabItem {
                     Label("Map", systemImage: "map.fill")
@@ -38,17 +43,6 @@ struct ContentView: View {
                 .tag(Tab.Map)
                 .environmentObject(lm)
                 .environmentObject(userSettings)
-            // Note: View below is for a future Qibla-direction-finder tab
-            /*
-            QiblaView()
-                .tabItem {
-                    Label("Qibla", systemImage: "location")
-                }
-                .tag(Tab.Qibla)
-                .environmentObject(lm)
-                .environmentObject(qiblaObserved)
-                .environmentObject(compassHeading)
-            */
             QuranView()
                 .tabItem {
                     Label("Qur'an", systemImage: "book")
